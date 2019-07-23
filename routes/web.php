@@ -14,3 +14,27 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login/user/', function () {
+    return view('pages.user.login');
+});
+
+Route::get('/login/admin/', function () {
+    return view('pages.admin.login');
+});
+
+Route::get('/login/verifikator/', function () {
+    return view('pages.verifikator.login');
+});
+
+Route::get('/user/home/', function () {
+    return view('pages.user.home');
+});
+
+Route::get('/verifikator/home/', function () {
+    return view('pages.verifikator.home');
+});
+
+Route::get('/admin/home/', function () {
+    return view('pages.admin.home');
+});

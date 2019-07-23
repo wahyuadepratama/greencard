@@ -1,0 +1,31 @@
+@media (max-width:991px){
+  #menu-toggle{
+    display: none;
+  }
+  #user-name-one{
+    display: none;
+  }
+  #user-name-two,#box-user-name{
+    display: block;
+  }
+  .collap{
+    display: block;
+  }
+}
+@media (min-width: 991px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+  #menu-toggle{
+    display: none;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}

@@ -1,0 +1,61 @@
+.container-fluid.login{
+  background: white;
+  height: 100vh;
+  width: 100vw;
+}
+.container.login{
+  background: white;
+  max-width: 350px;
+  padding: 20px;
+  align-self: center;
+  /* border: 1px solid #ddd;
+  border-radius: 15px; */
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+.navbar-toggler{
+  float: right;
+  margin-right: 0;
+}
+.collap{
+  display: none;
+}
+
+#card-wrapper>.col-sm-3>.card>.card-body>h5.card-title{
+  font-size: 0.9em;
+}
+.img-logo-sidebar{
+  max-width: 200px;
+}
+#user-name-two, #box-user-name{
+  display: none;
+}
