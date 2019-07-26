@@ -10,7 +10,7 @@
     <div class="sidebar-heading">
       <img src="{{asset('img/logo.jpg')}}" alt="" class="img-logo-sidebar">
     </div>
-    <div class="list-group list-group-flush">
+    <div class="list-group list-group-flush" id="sidebar-menu">
       <!-- Menu sidebar -->
       @yield('sidebar')
       <!-- end menu -->

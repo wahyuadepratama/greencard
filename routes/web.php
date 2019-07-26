@@ -38,3 +38,7 @@ Route::get('/verifikator/home/', function () {
 Route::get('/admin/home/', function () {
     return view('pages.admin.home');
 });
+
+Route::get('/admin/lapor/', function () {
+    return view('pages.admin.lapor_bahaya');
+});
