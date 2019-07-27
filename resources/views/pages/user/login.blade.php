@@ -3,7 +3,7 @@
 @section('title','Login User')
 
 @section('content')
-<form>
+<form action="{{ url('/user/home') }}">
   <div class="form-group">
     <input type="input" class="form-control" id="nik" placeholder="NIK">
   </div>
