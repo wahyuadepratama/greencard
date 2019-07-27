@@ -1,0 +1,63 @@
+@media (max-width:990px){
+  #menu-toggle{
+    display: none;
+  }
+  #user-name-one{
+    display: none;
+  }
+  #user-name-two,#box-user-name{
+    display: block;
+  }
+  .collap{
+    display: block;
+  }
+  #greencard-mobileview{
+    display: block!important;
+  }
+  #greencard-webview{
+    display: none!important;
+  }
+  .section{
+    position: relative;
+    width: 200%;
+    top:0px;
+    left: 0;
+  }
+  .year{
+    position:absolute;
+    right: 30px;
+    margin-top: 90px;
+  }
+  .section-year{
+    grid-template-rows: auto auto;
+    grid-template-areas:
+    " section . "
+    " . year " ;
+  }
+
+
+}
+@media (min-width: 991px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+  #menu-toggle{
+    display: none;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+
+  #greencard-mobileview{
+    display: none!important;
+  }
+  #greencard-webview{
+    display: block!important;
+  }
+}
