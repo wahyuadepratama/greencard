@@ -58,7 +58,7 @@
     </nav>
 
     <div class="container-fluid">
-      @yield('content-home')
+      @yield('content')
     </div>
 
   </div>

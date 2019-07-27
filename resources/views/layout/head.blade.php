@@ -11,6 +11,9 @@
        <!-- Optional CSS -->
        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
        <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
+      <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
 
@@ -22,6 +25,19 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
      <!-- Optional JavaScript -->
+     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" charset="utf-8"></script>
+     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" charset="utf-8"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" charset="utf-8"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" charset="utf-8"></script>
+     <!-- Latest compiled and minified CSS -->
+     <!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css"> -->
+
+     <!-- Latest compiled and minified JavaScript -->
+     <!-- <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script> -->
+     <!-- Latest compiled and minified Locales -->
+     <!-- <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/locale/bootstrap-table-zh-CN.min.js"></script> -->
+
      <script>
        $("#menu-toggle").click(function(e) {
          e.preventDefault();
@@ -29,17 +45,104 @@
        });
      </script>
 
-         <script>
-    // Add active class to the current button (highlight it)
-    var header = document.getElementById("sidebar-menu");
-    var btns = header.getElementsByClassName("list-group-item");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function() {
-      var current = document.getElementsByClassName("active-btn");
-      current[0].className = current[0].className.replace(" active-btn", "");
-      this.className += " active-btn";
-      });
-    }
+     <script>
+       // if ($(window).width() < 768) {
+       //    document.getElementById("greencard-mobileview").style.display="block"
+       //     document.getElementById("greencard-webview").style.display="none"
+       // }else{
+       //   document.getElementById("greencard-webview").style.display="block"
+       //   document.getElementById("greencard-mobileview").style.display="none"
+       // }
+        function openCity(evt, tabName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          var header = document.getElementById("tabs-history");
+          var child = header.getElementsByClassName("nav-item")
+          var tablinks = header.getElementsByClassName("nav-link");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            //tablinks[i].getElementsByClassName("nav-link").replace(" nav-link active","");
+          }
+          document.getElementById(tabName).style.display = "block";
+          evt.currentTarget.className += " active";
+          var id= document.getElementById(tabName).id;
+
+
+          console.log(id);
+
+        }
+
     </script>
+
+    <script type="text/javascript">
+    $('.datepicker').datepicker({
+        startDate: '-3d'
+    });
+     </script>
+     <script>
+         $('#datepicker').datepicker({
+             uiLibrary: 'bootstrap4'
+         });
+
+
+
+     </script>
+
+     <script type="text/javascript">
+     $(document).ready(function() {
+
+       // inspired by http://jsfiddle.net/arunpjohny/564Lxosz/1/
+       $('.table-responsive-stack').find("th").each(function (i) {
+
+          $('.table-responsive-stack td:nth-child(' + (i) + ')').css({ 'font-weight': 'bold'});;
+          $('.table-responsive-stack-thead').hide();
+       });
+
+      $( '.table-responsive-stack' ).each(function() {
+      var thCount = $(this).find("th").length;
+       var rowGrow = 100 / thCount + '%';
+       //console.log(rowGrow);
+       $(this).find("th, td").css('flex-basis', rowGrow);
+      });
+
+      function flexTable(){
+       if ($(window).width() < 768) {
+            $(".greencard-mobileview").show();
+           $(".table-responsive-stack").each(function (i) {
+              $(this).find(".table-responsive-stack-thead").show();
+              $(this).find('thead').hide();
+           });
+
+           // window is less than 768px
+           } else {
+
+           $(".table-responsive-stack").each(function (i) {
+              $(this).find(".table-responsive-stack-thead").hide();
+              $(this).find('thead').hide();
+           });
+             }
+          // flextable
+        }
+
+          flexTable();
+
+          window.onresize = function(event) {
+            flexTable();
+          };
+          // document ready
+          });
+          $(document).ready(function() {
+              $('#open-table-data').DataTable();
+          } );
+          $(document).ready(function() {
+              $('#close-table-data').DataTable();
+          } );
+
+
+     </script>
+    @yield('js-chart')
    </body>
 </html>

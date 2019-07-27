@@ -1,36 +1,6 @@
 @extends('layout.master')
 
-<!-- menu sidebar -->
-@section('sidebar')
-<a href="#" class="list-group-item list-group-item-action bg-light">Home</a>
-<a href="#" class="list-group-item list-group-item-action bg-light">Lapor Bahaya</a>
-<a href="#" class="list-group-item list-group-item-action bg-light">Riwayat pelaporan</a>
-<a href="#" class="list-group-item list-group-item-action bg-light">Statistik</a>
-<a href="#" class="list-group-item list-group-item-action bg-light">Data Greencard</a>
-<a href="#" class="list-group-item list-group-item-action bg-light">Summary</a>
-@endsection
-<!-- end menu sidebar -->
-
-@section('menu-collapse')
-<li class="nav-item collap">
-  <a class="nav-link" href="#">Home</a>
-</li>
-<li class="nav-item collap">
-  <a class="nav-link" href="#">Lapor Bahaya</a>
-</li>
-<li class="nav-item collap">
-  <a class="nav-link" href="#">Riwayat pelaporan</a>
-</li>
-<li class="nav-item collap">
-  <a class="nav-link" href="#">Statistik</a>
-</li>
-<li class="nav-item collap">
-  <a class="nav-link" href="#">Data Greencard</a>
-</li>
-<li class="nav-item collap">
-  <a class="nav-link" href="#">Summary</a>
-</li>
-@endsection
+@include('layout.menu_verifikator')
 
 @section('content-home')
 <!-- content home -->
