@@ -53,27 +53,52 @@
        //   document.getElementById("greencard-webview").style.display="block"
        //   document.getElementById("greencard-mobileview").style.display="none"
        // }
+       //var tab = document.getElementById("open-status").style.display = "block";
+
+
         function openCity(evt, tabName) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-          for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-          }
-          var header = document.getElementById("tabs-history");
-          var child = header.getElementsByClassName("nav-item")
-          var tablinks = header.getElementsByClassName("nav-link");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-            //tablinks[i].getElementsByClassName("nav-link").replace(" nav-link active","");
-          }
-          document.getElementById(tabName).style.display = "block";
-          evt.currentTarget.className += " active";
-          var id= document.getElementById(tabName).id;
+          var i, tabcontent, tablinks,tabid;
 
+            if ($(window).width() < 991) {
+                tabid = document.getElementById("greencard-mobileview");
+                tabid.display = "block";
+                document.getElementById("greencard-webview").display="none";
+                tabcontent = tabid.getElementsByClassName("tabcontent-mobile");
 
-          console.log(id);
+            }else{
+               tabid = document.getElementById("greencard-webview");
+               tabid.display = "block";
+               document.getElementById("greencard-mobileview").display="none";
+               tabcontent = tabid.getElementsByClassName("tabcontent");
+
+            }
+            for (i = 0; i < tabcontent.length; i++) {
+               console.log(tabcontent[i].id);
+               tabcontent[i].style.display = "none";
+            }
+            var header = document.getElementById("tabs-history");
+            var child = header.getElementsByClassName("nav-item")
+            var tablinks = header.getElementsByClassName("nav-link");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            var id= document.getElementById(tabName).id;
+            console.log("SKRG INI "+id);
+            document.getElementById(tabName).style.display = "block !important";
+            evt.currentTarget.className += " active";
+            //document.getElementById(tabName).style.display = "block";
+            if (tabName == "open-status") {
+               tabcontent[0].style.display = "block";
+              tabcontent[1].style.display  = "none";
+            }
+            else{
+               tabcontent[1].style.display= "block";
+                tabcontent[0].style.display = "none";
+            }
+            //console.log(id);
 
         }
+
 
     </script>
 

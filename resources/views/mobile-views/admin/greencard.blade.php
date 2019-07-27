@@ -1,4 +1,4 @@
-<div class="" id="greencard-mobileview">
+<div id="greencard-mobileview">
     <div id="open-status" class="tabcontent-mobile" style="border: 1px solid #ddd; border-top:0px;">
     <div class="row">
       <div class="col">
@@ -27,7 +27,7 @@
         <table width="100%" class="table-mobileview">
           <tr>
             <td>#1</td>
-            <td class="text-right">12 November 2019</td>
+            <td class="text-right">18 November 2019</td>
           </tr>
           <tr>
             <td>Lokasi</td>
@@ -137,7 +137,7 @@
       <div class="container border m-2 p-4">
         <table width="100%" class="table-mobileview">
           <tr>
-            <td>#1</td>
+            <td>#100</td>
             <td class="text-right">12 November 2019</td>
           </tr>
           <tr>

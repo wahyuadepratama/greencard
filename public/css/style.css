@@ -121,13 +121,6 @@ padding-right: 150px;
       display:block;
 
    }
-
-   #greencard-mobileview{
-     display: block;
-   }
-   #greencard-webview{
-     display: none;
-   }
    /*  IE9 FIX   */
    .table-responsive-stack td {
       float: left\9;

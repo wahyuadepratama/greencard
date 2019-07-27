@@ -9,6 +9,8 @@
     <button type="button" name="button" class="form-control float-right" style="width:200px;" data-toggle="modal" data-target="#addManPower"><i class="fa fa-plus"></i> Man Power</button>
   </div>
   <br>
+<div id="greencard-webview">
+
 
   <!-- CONTENT TAB OPEN -->
   <div id="open-status" class="tabcontent border">
@@ -47,8 +49,8 @@
       </div>
   </div>
   <!-- END CONTENT TAB OPEN -->
-
-
+</div>
+@include('mobile-views.admin.man_power')
 </div>
 @endsection
 

@@ -53,10 +53,11 @@
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
+
   #greencard-mobileview{
-    display: none;
+    display: none!important;
   }
   #greencard-webview{
-    display: block;
+    display: block!important;
   }
 }

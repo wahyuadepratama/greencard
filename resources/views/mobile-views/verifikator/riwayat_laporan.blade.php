@@ -27,7 +27,7 @@
         <table width="100%" class="table-mobileview">
           <tr>
             <td>#1</td>
-            <td class="text-right">12 November 2019</td>
+            <td class="text-right">100 November 2019</td>
           </tr>
           <tr>
             <td>Lokasi</td>
