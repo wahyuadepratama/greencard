@@ -111,9 +111,6 @@
          $('#datepicker').datepicker({
              uiLibrary: 'bootstrap4'
          });
-
-
-
      </script>
 
      <script type="text/javascript">
@@ -167,7 +164,51 @@
           } );
 
 
+
+
      </script>
+     <script>
+      // $(document).ready(function(){
+      //   $("#myInput").on("keyup", function() {
+      //     var value = $(this).val().toLowerCase();
+      //     $("#searchTable *").filter(function() {
+      //       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      //     });
+      //   });
+      // });
+      // function showSomeData(){
+      //   var filter = document.getElementById("showData");
+      //   var count = filter.options[filter.selectedIndex].value;
+      //   console.log(count);
+      //   var filterElement = document.getElementById("searchTable");
+      //   var container = filterElement.getElementsByClassName("container");
+      //     for (var a = 0; a < count; a++) {
+      //       container[a].style.display = "block";
+      //     }
+      // }
+      function searchTableRow(){
+        var input, filter;
+        var table, tr, td, i, txtValue, tbody = [];
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        filterElement = document.getElementById("searchTable");
+        container = filterElement.getElementsByClassName("container");
+          for (var a = 0; a < container.length; a++) {
+           td = container[a].getElementsByTagName("table").item(0);
+           console.log(td);
+           txtValue = td.textContent || td.innerText;
+           if(td){
+             if (txtValue.toUpperCase().indexOf(filter) > -1) {
+               container[a].style.display="block";
+             }
+             else {
+               container[a].style.display="none";
+             }
+           }
+        }
+      }
+
+      </script>
     @yield('js-chart')
    </body>
 </html>
