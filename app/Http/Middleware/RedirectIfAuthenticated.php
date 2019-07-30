@@ -17,10 +17,20 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+      if (session('login') !== null) {
+        switch (session('login')->role_id) {
+          case 1:
+            return redirect('/admin/home');
+            break;
+          case 2:
+            return redirect('/verifikator/home');
+            break;
+          case 3:
+            return redirect('/user/home');
+            break;
         }
+      }
 
-        return $next($request);
+      return $next($request);
     }
 }

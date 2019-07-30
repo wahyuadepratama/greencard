@@ -11,82 +11,50 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () { return redirect('/login/user/'); });
+Route::get('/user', function () { return redirect('/login/user/'); });
+Route::get('/verifikator', function () { return redirect('/login/verifikator/'); });
+Route::get('/admin', function () { return redirect('/login/admin/'); });
+
+Route::get('/login', function () { return redirect('/login/user/'); });
+Route::post('/login',  'Auth\LoginController@login')->name('login');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+ /*
+  ---------------- User Route disini --------------------
+ */
+Route::get('/login/user/', 'Auth\LoginController@loginFormUser');
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/user/home/', 'User\DashboardController@index');
+  Route::get('/user/lapor/', 'User\DangerReportController@index');
+  Route::get('/user/riwayat/', 'User\HistoryReportController@index');
+  Route::get('/user/statistik/', 'User\StatistikController@index');
+  Route::get('/user/summary/', 'User\SummaryController@index');
 });
 
-Route::get('/login/user/', function () {
-    return view('pages.user.login');
+/*
+ --------------- Admin Route disini ------------------
+*/
+Route::get('/login/admin/', 'Auth\LoginController@loginFormAdmin');
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/admin/home/', 'Admin\DashboardController@index');
+  Route::get('/admin/lapor/', 'Admin\DangerReportController@index');
+  Route::get('/admin/riwayat/', 'Admin\HistoryReportController@index');
+  Route::get('/admin/statistik/', 'Admin\StatistikController@index');
+  Route::get('/admin/summary/', 'Admin\SummaryController@index');
+  Route::get('/admin/greencard/', 'Admin\GreencardController@index');
+  Route::get('/admin/man-power/', 'Admin\ManPowerController@index');
 });
 
-Route::get('/login/admin/', function () {
-    return view('pages.admin.login');
-});
-
-Route::get('/login/verifikator/', function () {
-    return view('pages.verifikator.login');
-});
-
-Route::get('/user/home/', function () {
-    return view('pages.user.home');
-});
-
-Route::get('/verifikator/home/', function () {
-    return view('pages.verifikator.home');
-});
-
-Route::get('/admin/home/', function () {
-    return view('pages.admin.home');
-});
-
-Route::get('/admin/lapor/', function () {
-    return view('pages.admin.lapor_bahaya');
-});
-Route::get('/user/lapor/', function () {
-    return view('pages.user.lapor_bahaya');
-});
-Route::get('/verifikator/lapor/', function () {
-    return view('pages.verifikator.lapor_bahaya');
-});
-
-Route::get('/admin/riwayat/', function () {
-    return view('pages.admin.riwayat_pelaporan');
-});
-
-Route::get('/user/riwayat/', function () {
-    return view('pages.user.riwayat_pelaporan');
-});
-
-Route::get('/verifikator/riwayat/', function () {
-    return view('pages.verifikator.riwayat_pelaporan');
-});
-Route::get('/user/statistik/', function () {
-    return view('pages.user.statistik');
-});
-
-Route::get('/admin/statistik/', function () {
-    return view('pages.admin.statistik');
-});
-
-Route::get('/verifikator/statistik/', function () {
-    return view('pages.verifikator.statistik');
-});
-
-Route::get('/admin/summary/', function () {
-    return view('pages.admin.summary');
-});
-Route::get('/user/summary/', function () {
-    return view('pages.user.summary');
-});
-Route::get('/verifikator/summary/', function () {
-    return view('pages.verifikator.summary');
-});
-Route::get('/admin/greencard/', function () {
-    return view('pages.admin.greencard');
-});
-Route::get('/verifikator/greencard/', function () {
-    return view('pages.verifikator.greencard');
-});
-Route::get('/admin/man-power/', function () {
-    return view('pages.admin.man_power');
+/*
+ ---------------- Verifikator Route disini -----------------
+*/
+Route::get('/login/verifikator/', 'Auth\LoginController@loginFormVerifikator');
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/verifikator/home/', 'Verifikator\DashboardController@index');
+  Route::get('/verifikator/lapor/', 'Verifikator\DangerReportController@index');
+  Route::get('/verifikator/riwayat/', 'Verifikator\HistoryController@index');
+  Route::get('/verifikator/statistik/', 'Verifikator\StatistikController@index');
+  Route::get('/verifikator/summary/', 'Verifikator\SummaryController@index');
+  Route::get('/verifikator/greencard/', 'Verifikator\GreencardController@index');
 });
