@@ -52,8 +52,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-      if ($request->password == null) {
-        dd($request->nik);
+      if ($request->password == null) {        
         $nik = User::where('nik', $request->nik)->first();
         if ($nik) {
           session(['login' => $nik]);
