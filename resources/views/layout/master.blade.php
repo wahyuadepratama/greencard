@@ -50,7 +50,7 @@
               <img src="{{asset('img/reza.jpg')}}" alt="" class="rounded-circle"  height="30px" width="30px"></a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                <a class="dropdown-item" href="#">{{ session('login')->nik }}</a>
+                <a class="dropdown-item" href="#">{{ session('login')->nik }} ({{ session('login')->role_id }})</a>
 
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log out</a>
