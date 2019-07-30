@@ -24,16 +24,18 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
 
-
       <ul class="ml-auto mt-0 mb-0 mr-2 mt-lg-0">
         <li class="nav-item clearfix dropdown" id="box-user-name">
           <a class="nav-link dropdown-toggle" href="#"role="button" data-toggle="dropdown">
             <img src="{{asset('img/reza.jpg')}}" alt="" class="rounded-circle" height="30px" width="30px"></a>
             <div class="dropdown-menu dropdown-menu-right" >
-              <a class="dropdown-item" href="#">Wahyu Ade Pratama</a>
+              <a class="dropdown-item" href="#">{{ session('login')->name }}</a>
 
               <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log out</a>
+                <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log out</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
         </li>
       </ul>
@@ -44,12 +46,17 @@
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           <li class="nav-item clearfix dropdown" id="user-name-one">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span style="margin-right:10px" >Welcome, Wahyu </span>
+              <span style="margin-right:10px" >Welcome, {{ session('login')->name }} </span>
               <img src="{{asset('img/reza.jpg')}}" alt="" class="rounded-circle"  height="30px" width="30px"></a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Wahyu Ade Pratama</a>
+
+                <a class="dropdown-item" href="#">{{ session('login')->nik }}</a>
+
                 <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+                <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log out</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
               </div>
           </li>
           @yield('menu-collapse')

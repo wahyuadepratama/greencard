@@ -11,46 +11,38 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login/user/');
-});
+Route::get('/', function () { return redirect('/login/user/'); });
+Route::get('/user', function () { return redirect('/login/user/'); });
+Route::get('/verifikator', function () { return redirect('/login/verifikator/'); });
+Route::get('/admin', function () { return redirect('/login/admin/'); });
+
+Route::get('/login', function () { return redirect('/login/user/'); });
+Route::post('/login',  'Auth\LoginController@login')->name('login');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
  /*
-  ------------- User Route disini
+  ---------------- User Route disini --------------------
  */
-Route::get('/login/user/', function () {
-    return view('pages.user.login');
-});
-
-Route::get('/user/lapor/', function () {
-    return view('pages.user.lapor_bahaya');
-});
-
-Route::get('/user/home/', function () {
-    return view('pages.user.home');
-});
-
-Route::get('/user/riwayat/', function () {
-    return view('pages.user.riwayat_pelaporan');
-});
-
-Route::get('/user/statistik/', function () {
-    return view('pages.user.statistik');
-});
-
-Route::get('/user/summary/', function () {
-    return view('pages.user.summary');
+Route::get('/login/user/', 'Auth\LoginController@loginFormUser');
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/user/home/', 'User\DashboardController@index');
+  Route::get('/user/lapor/', 'User\DangerReportController@index');
+  Route::get('/user/riwayat/', 'User\HistoryReportController@index');
+  Route::get('/user/statistik/', 'User\StatistikController@index');
+  Route::get('/user/summary/', 'User\SummaryController@index');
 });
 
 /*
- ------------- Admin Route disini
+ ------------- Admin Route disini ------------------
 */
 Route::get('/login/admin/', function () {
     return view('pages.admin.login');
 });
 
-Route::get('/admin/home/', function () {
-    return view('pages.admin.home');
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/admin/home/', function () {
+      return view('pages.admin.home');
+  });
 });
 
 Route::get('/admin/lapor/', function () {
@@ -78,14 +70,16 @@ Route::get('/admin/man-power/', function () {
 });
 
 /*
- ------------- Verifikator Route disini
+ ------------- Verifikator Route disini -----------------
 */
 Route::get('/login/verifikator/', function () {
     return view('pages.verifikator.login');
 });
 
-Route::get('/verifikator/home/', function () {
-    return view('pages.verifikator.home');
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/verifikator/home/', function () {
+      return view('pages.verifikator.home');
+  });
 });
 
 Route::get('/verifikator/lapor/', function () {
