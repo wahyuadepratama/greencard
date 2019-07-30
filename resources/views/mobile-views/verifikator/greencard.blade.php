@@ -41,8 +41,8 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
@@ -68,8 +68,8 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
@@ -96,8 +96,8 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
@@ -150,8 +150,8 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
@@ -176,8 +176,8 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
@@ -202,14 +202,15 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
         </table>
     </div>
   </div>
+</div>
 </div>
     <!-- END CONTEN TAB CLOSE -->
 </div>

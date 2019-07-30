@@ -6,7 +6,7 @@
 <!-- content home -->
   <div class="container" >
     <br>
-    <div class="row" id="card-wrapper">
+    <div id="card-wrapper">
       <div class="col-sm-3">
         <div class="card">
           <div class="card-body">

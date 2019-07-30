@@ -197,7 +197,12 @@ button[data-toggle="collapse"].btn-link:active{
 }
 .year{
   grid-area: year;
-  position:absolute;
+  position: absolute;
   right: 30px;
   top: 80px;
+}
+#card-wrapper>.col-sm-3>.card{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }

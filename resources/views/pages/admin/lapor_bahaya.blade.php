@@ -11,7 +11,7 @@
         <div class="report-form-container">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Section</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" onchange="showInputSection(this)">
               <option>Business</option>
               <option>Unit</option>
               <option>Produksi</option>
@@ -27,12 +27,15 @@
               <option>IER</option>
               <option>Finance</option>
               <option>IT</option>
-              <option>Other</option>
+              <option value="other">Other</option>
             </select>
           </div>
           <div class="form-group">
+            <input type="input" class="form-control" id="other-section-input" placeholder="Ketik disini" style="display:none; margin-top:20px;">
+          </div>
+          <div class="form-group">
             <label for="exampleFormControlSelect1">BRL/Level</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" onchange="showInputLevel(this)">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -40,18 +43,36 @@
               <option>5</option>
               <option>6</option>
               <option>Vendor/Mitra Kerja</option>
-              <option>Other</option>
+              <option value="other">Other</option>
             </select>
           </div>
           <div class="form-group">
+            <input type="input" class="form-control" id="other-level-input" placeholder="Ketik disini" style="display:none; margin-top:20px;">
+          </div>
+          <div class="form-group">
             <label for="exampleFormControlSelect2">Tanggal ditemukannya bahaya (bulan/hari/tahun)</label>
-            <input id="datepicker" width="276" />
+            <!-- <input id="datepicker" width="276" /> -->
+            <div class="form-group">
+                <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker"/>
+                    <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div>
 
 
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect2">Waktu ditemukannya bahaya</label>
-              <input placeholder="Selected time" type="text" id="input_starttime" class="form-control timepicker">
+            <div class="form-group">
+                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+                    </div>
+                </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect2">Lokasi</label>

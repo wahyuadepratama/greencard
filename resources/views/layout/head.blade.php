@@ -14,6 +14,7 @@
       <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
   </head>
   <body>
 
@@ -25,18 +26,32 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
      <!-- Optional JavaScript -->
+     <!-- data table -->
      <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" charset="utf-8"></script>
      <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" charset="utf-8"></script>
+     <!-- Chart -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js" charset="utf-8"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" charset="utf-8"></script>
-     <!-- Latest compiled and minified CSS -->
-     <!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css"> -->
+     <!-- datetime picker -->
+     <script src="https://momentjs.com/downloads/moment-with-locales.js" charset="utf-8"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+     <script type="text/javascript">
+       $(function () {
+                  $('#datetimepicker2').datetimepicker({
+                      format: 'LT',
+                      locale:'id'
+                  });
+              });
 
-     <!-- Latest compiled and minified JavaScript -->
-     <!-- <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script> -->
-     <!-- Latest compiled and minified Locales -->
-     <!-- <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/locale/bootstrap-table-zh-CN.min.js"></script> -->
+        $(function () {
+                   $('#datetimepicker').datetimepicker({
+                      format: 'L',
+                       locale:'id'
+                   });
+               });
+     </script>
+
 
      <script>
        $("#menu-toggle").click(function(e) {
@@ -46,28 +61,19 @@
      </script>
 
      <script>
-       // if ($(window).width() < 768) {
-       //    document.getElementById("greencard-mobileview").style.display="block"
-       //     document.getElementById("greencard-webview").style.display="none"
-       // }else{
-       //   document.getElementById("greencard-webview").style.display="block"
-       //   document.getElementById("greencard-mobileview").style.display="none"
-       // }
-       //var tab = document.getElementById("open-status").style.display = "block";
-
 
         function openCity(evt, tabName) {
           var i, tabcontent, tablinks,tabid;
 
             if ($(window).width() < 991) {
                 tabid = document.getElementById("greencard-mobileview");
-                tabid.display = "block";
+                tabid.style.display = "block";
                 document.getElementById("greencard-webview").display="none";
                 tabcontent = tabid.getElementsByClassName("tabcontent-mobile");
 
             }else{
                tabid = document.getElementById("greencard-webview");
-               tabid.display = "block";
+               tabid.style.display = "block";
                document.getElementById("greencard-mobileview").display="none";
                tabcontent = tabid.getElementsByClassName("tabcontent");
 
@@ -101,17 +107,6 @@
 
 
     </script>
-
-    <script type="text/javascript">
-    $('.datepicker').datepicker({
-        startDate: '-3d'
-    });
-     </script>
-     <script>
-         $('#datepicker').datepicker({
-             uiLibrary: 'bootstrap4'
-         });
-     </script>
 
      <script type="text/javascript">
      $(document).ready(function() {
@@ -163,29 +158,9 @@
               $('#close-table-data').DataTable();
           } );
 
-
-
-
      </script>
      <script>
-      // $(document).ready(function(){
-      //   $("#myInput").on("keyup", function() {
-      //     var value = $(this).val().toLowerCase();
-      //     $("#searchTable *").filter(function() {
-      //       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      //     });
-      //   });
-      // });
-      // function showSomeData(){
-      //   var filter = document.getElementById("showData");
-      //   var count = filter.options[filter.selectedIndex].value;
-      //   console.log(count);
-      //   var filterElement = document.getElementById("searchTable");
-      //   var container = filterElement.getElementsByClassName("container");
-      //     for (var a = 0; a < count; a++) {
-      //       container[a].style.display = "block";
-      //     }
-      // }
+
       function searchTableRow(){
         var input, filter;
         var table, tr, td, i, txtValue, tbody = [];
@@ -195,8 +170,9 @@
         container = filterElement.getElementsByClassName("container");
           for (var a = 0; a < container.length; a++) {
            td = container[a].getElementsByTagName("table").item(0);
-           console.log(td);
+
            txtValue = td.textContent || td.innerText;
+           console.log(txtValue);
            if(td){
              if (txtValue.toUpperCase().indexOf(filter) > -1) {
                container[a].style.display="block";
@@ -208,7 +184,24 @@
         }
       }
 
+      // menmapilkan other input pada Laporan Bahaya
+      function showInputSection(select){
+       if(select.value=='other'){
+        document.getElementById('other-section-input').style.display = "block";
+       } else{
+        document.getElementById('other-section-input').style.display = "none";
+       }
+     }
+       function showInputLevel(select){
+        if(select.value=='other'){
+         document.getElementById('other-level-input').style.display = "block";
+        } else{
+         document.getElementById('other-level-input').style.display = "none";
+        }
+      }
+
       </script>
+
     @yield('js-chart')
    </body>
 </html>

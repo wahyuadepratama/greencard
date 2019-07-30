@@ -2,7 +2,7 @@
 
 @include('layout.menu_verifikator')
 
-@section('content-home')
+@section('content')
 <!-- content home -->
   <div class="container" >
     <br>
