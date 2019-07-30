@@ -34,14 +34,20 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
       $this->middleware('guest')->except('logout');
     }
 
-    public function loginFormUser()
-    {
+    public function loginFormUser(){
       return view('pages.user.login');
+    }
+
+    public function loginFormVerifikator(){
+      return view('pages.verifikator.login');
+    }
+
+    public function loginFormAdmin(){
+      return view('pages.admin.login');
     }
 
     public function login(Request $request)
@@ -69,7 +75,7 @@ class LoginController extends Controller
               return redirect('/verifikator/home');
               break;
             case 3:
-              return back()->with('error', 'Anda tidak terdaftar sebagai verifikator!');
+              return back()->with('error', 'Anda tidak terdaftar sebagai admin maupun verifikator!');
               break;
           }
         }else{
@@ -84,16 +90,4 @@ class LoginController extends Controller
       // session(['login' => null]);
       return back();
     }
-
-    // public function loginAsUser(Request $request)
-    // {
-    //     $credentials = $request->only('nik', 'password');
-    //     $credentials['password'] = '123456';
-    //
-    //     if (Auth::guard('web')->attempt($credentials)) {
-    //         // Authentication passed...
-    //         return redirect()->intended('/user/home');
-    //     }
-    //     return back()->with('error', 'NIK belum terdaftar!');
-    // }
 }
