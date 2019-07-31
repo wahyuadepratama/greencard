@@ -24,17 +24,46 @@
     left: 0;
   }
   .year{
-    position:absolute;
-    right: 30px;
-    margin-top: 90px;
+    position:relative;
+    right: 0px;
+    margin-top: 0px;
+  }
+  .section.form-group{
+      margin: 0px;
   }
   .section-year{
-    grid-template-rows: auto auto;
+    grid-template-rows:auto;
     grid-template-areas:
-    " section . "
-    " . year " ;
+    " section ."
+    ". .";
+  }
+  .report-form-container>.grid-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows:auto auto;
+    grid-template-areas:
+    "grid-area-1"
+    "grid-area-2"
   }
 
+
+}
+@media (max-width:800px){
+  .year{
+    position:relative;
+    right: 0px;
+    margin: 0px;
+    top: 60px!important;
+  }
+  .section.form-group{
+      margin: 0px;
+  }
+  .section-year{
+    grid-auto-rows:auto !important;
+    grid-template-areas:
+    "section ."
+    ". .";
+  }
 
 }
 @media (min-width: 991px) {

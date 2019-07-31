@@ -144,7 +144,9 @@
                 </button>
               </td>
               <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#status">
                 Open
+                </button>
               </td>
             </tr>
             <tr>
@@ -158,7 +160,9 @@
                 </button>
               </td>
               <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#status">
                 Open
+                </button>
               </td>
             </tr>
             <tr>
@@ -172,7 +176,9 @@
                 </button>
               </td>
               <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#status">
                 Open
+                </button>
               </td>
             </tr>
           </tbody>
@@ -186,3 +192,4 @@
 @endsection
 
 @include('sub-views.modal-admin.modal-detail')
+@include('sub-views.modal-admin.modal-status')

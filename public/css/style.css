@@ -197,7 +197,29 @@ button[data-toggle="collapse"].btn-link:active{
 }
 .year{
   grid-area: year;
-  position:absolute;
+  position: absolute;
   right: 30px;
   top: 80px;
+}
+#card-wrapper>.col-sm-3>.card{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.report-form-container>.grid-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows:auto ;
+  grid-column-gap: 10px;
+  grid-template-areas:
+  "grid-area-1 grid-area-2"
+}
+.grid-area-1{
+  grid-area:grid-area-1;
+}
+.grid-area-2{
+  grid-area:grid-area-2;
+}
+a.nav-link.dropdown-toggle{
+  color: rgba(0,0,0,.5);
 }

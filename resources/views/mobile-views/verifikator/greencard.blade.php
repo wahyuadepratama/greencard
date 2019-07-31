@@ -16,14 +16,14 @@
         <div class="form-inline float-right">
           <div class="form-inline">
             <label for="">Search: &nbsp;</label>
-            <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="open-table-data">
+            <input type="search" class="form-control form-control-sm" placeholder="" id="myInput" onkeyup="searchTableRow()">
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="container border m-2 p-4">
+    <div class="" id="searchTable">
+      <div class="container border pt-2 pb-2 mt-3">
         <table width="100%" class="table-mobileview">
           <tr>
             <td>#1</td>
@@ -41,17 +41,16 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
         </table>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="container border m-2 p-4">
+
+      <div class="container border pt-2 pb-2 mt-3">
         <table width="100%" class="table-mobileview">
           <tr>
             <td>#2</td>
@@ -69,17 +68,17 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
         </table>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="container border m-2 p-4">
+
+
+      <div class="container border pt-2 pb-2 mt-3">
         <table width="100%" class="table-mobileview">
           <tr>
             <td>#3</td>
@@ -97,15 +96,14 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
         </table>
       </div>
     </div>
-
   </div>
   <!-- END CONTENT TAB OPEN -->
 
@@ -127,14 +125,14 @@
         <div class="form-inline float-right">
           <div class="form-inline">
             <label for="">Search: &nbsp;</label>
-            <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="open-table-data">
+            <input type="search" class="form-control form-control-sm" placeholder="" id="myInput" onkeyup="searchTableRow()">
           </div>
         </div>
       </div>
     </div>
-
+<div class="" id="searchTable">
     <div class="row">
-      <div class="container border m-2 p-4">
+      <div class="container border pt-2 pb-2 mt-3">
         <table width="100%" class="table-mobileview">
           <tr>
             <td>#1</td>
@@ -152,17 +150,15 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
         </table>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="container border m-2 p-4">
+      <div class="container border pt-2 pb-2 mt-3">
         <table width="100%" class="table-mobileview">
           <tr>
             <td>#2</td>
@@ -180,17 +176,15 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
         </table>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="container border m-2 p-4">
+      <div class="container border pt-2 pb-2 mt-3">
         <table width="100%" class="table-mobileview">
           <tr>
             <td>#3</td>
@@ -208,14 +202,15 @@
             <td colspan="2">
               <br>
               <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
+                <button type="button" name="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#status">Open</button>
               </div>
             </td>
           </tr>
         </table>
-      </div>
     </div>
   </div>
+</div>
+</div>
     <!-- END CONTEN TAB CLOSE -->
 </div>
