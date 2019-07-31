@@ -6,7 +6,7 @@
 <!-- content home -->
   <div class="container" >
     <br>
-    <div id="card-wrapper">
+    <div class="row" id="card-wrapper">
       <div class="col-sm-3">
         <div class="card">
           <div class="card-body">
@@ -62,6 +62,7 @@
           </div>
         </div>
       </div>
+
     </div>
 <br>
     <div class="row" id="rank-wrapper">

@@ -220,3 +220,6 @@ button[data-toggle="collapse"].btn-link:active{
 .grid-area-2{
   grid-area:grid-area-2;
 }
+a.nav-link.dropdown-toggle{
+  color: rgba(0,0,0,.5);
+}

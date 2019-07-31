@@ -95,8 +95,8 @@
       </div>
       <div class="col-lg-6">
         <div class="report-form-container">
-          <div class="row">
-            <div class="col">
+          <div class="grid-container">
+            <div class="grid-area-1">
               <div class="form-group">
                   <label for="exampleFormControlSelect1">Kategori Bahaya</label>
                   <select class="form-control" id="exampleFormControlSelect1">
@@ -105,7 +105,7 @@
                   </select>
                 </div>
               </div>
-              <div class="col">
+              <div class="grid-area-2">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Kode Bahaya</label>
                     <select class="form-control" id="exampleFormControlSelect1">
