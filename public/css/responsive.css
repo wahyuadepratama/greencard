@@ -37,6 +37,14 @@
     " section ."
     ". .";
   }
+  .report-form-container>.grid-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows:auto auto;
+    grid-template-areas:
+    "grid-area-1"
+    "grid-area-2"
+  }
 
 
 }
