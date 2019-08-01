@@ -10,6 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+      // return session('login')->role_id;
       // $data = DB::table('your_table')
       //       ->select('column', 'COUNT(column) AS occurrences')
       //       ->groupBy('column')

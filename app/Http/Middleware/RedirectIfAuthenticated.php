@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
       if (session('login') !== null) {
         switch (session('login')->role_id) {
           case 1:
-            return redirect('/admin/home');
+            return redirect('/admin/home');            
             break;
           case 2:
             return redirect('/verifikator/home');

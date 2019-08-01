@@ -129,8 +129,32 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'date' => [
+            'required' => 'Tanggal tidak boleh kosong',
+        ],
+        'time' => [
+            'required' => 'Waktu tidak boleh kosong',
+        ],
+        'detail_location' => [
+            'required' => 'Detail lokasi tidak boleh kosong',
+        ],
+        'danger_category' => [
+            'required' => 'Kategori bahaya tidak boleh kosong',
+        ],
+        'danger_code' => [
+            'required' => 'Kode Bahaya tidak boleh kosong',
+        ],
+        'description' => [
+            'required' => 'Deskripsi tidak boleh kosong',
+        ],
+        'risk' => [
+            'required' => 'Resiko tidak boleh kosong',
+        ],
+        'action' => [
+            'required' => 'Tindakan tidak boleh kosong',
+        ],
+        'status' => [
+            'required' => 'Status tidak boleh kosong',
         ],
     ],
 
