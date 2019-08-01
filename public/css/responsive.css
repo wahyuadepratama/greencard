@@ -17,26 +17,23 @@
   #greencard-webview{
     display: none!important;
   }
+  .section-year{
+    grid-template-columns: 1fr !important;
+    grid-template-rows:auto auto !important;
+    grid-template-areas:
+    "section"
+    "year" !important;
+  }
   .section{
-    position: relative;
-    width: 200%;
-    top:0px;
-    left: 0;
+  position: inherit;
+  margin-bottom: 10px;
   }
   .year{
-    position:relative;
-    right: 0px;
-    margin-top: 0px;
+   position: inherit;
+   margin-left: 0px !important;
+   margin-bottom: 10px;
   }
-  .section.form-group{
-      margin: 0px;
-  }
-  .section-year{
-    grid-template-rows:auto;
-    grid-template-areas:
-    " section ."
-    ". .";
-  }
+
   .report-form-container>.grid-container{
     display: grid;
     grid-template-columns: 1fr;
@@ -49,7 +46,7 @@
 
 }
 @media (max-width:800px){
-  .year{
+  /* .year{
     position:relative;
     right: 0px;
     margin: 0px;
@@ -63,7 +60,7 @@
     grid-template-areas:
     "section ."
     ". .";
-  }
+  } */
 
 }
 @media (min-width: 991px) {

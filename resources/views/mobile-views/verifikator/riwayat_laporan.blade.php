@@ -124,13 +124,13 @@
         <div class="form-inline float-right">
           <div class="form-inline">
             <label for="">Search: &nbsp;</label>
-            <input type="search" class="form-control form-control-sm" placeholder="" id="myInput" onkeyup="searchTableRow()" >
+            <input type="search" class="form-control form-control-sm" placeholder="" id="myInputClose" onkeyup="searchTableRowClose()" >
           </div>
         </div>
       </div>
     </div>
 <!-- start search -->
-  <div id="searchTable">
+  <div id="searchTableClose">
       <div class="container border m-2 p-4">
         <table width="100%" class="table-mobileview">
           <tr>

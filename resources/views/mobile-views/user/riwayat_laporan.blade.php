@@ -118,7 +118,7 @@
   <!-- END CONTENT TAB OPEN -->
 
   <!-- CONTENT TAB CLOSE -->
-  <div id="searchTable">
+
   <div id="close-status" class="tabcontent-mobile" style="border: 1px solid #ddd; border-top:0px;">
     <div class="row">
       <div class="col">
@@ -136,12 +136,12 @@
         <div class="form-inline float-right">
           <div class="form-inline">
             <label for="">Search: &nbsp;</label>
-            <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="open-table-data">
+            <input type="search" class="form-control form-control-sm" placeholder="" id="myInputClose" onkeyup="searchTableRowClose()">
           </div>
         </div>
       </div>
     </div>
-
+<div id="searchTableClose">
       <div class="container border m-2 p-4">
         <table width="100%" class="table-mobileview">
           <tr>
