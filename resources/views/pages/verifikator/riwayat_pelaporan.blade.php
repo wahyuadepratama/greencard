@@ -47,8 +47,8 @@
       <a class="nav-link" href="#" onclick="openCity(event,'close-status')">Close</a>
     </li>
   </ul>
-  <div id="greencard-webview">
 
+  <div id="greencard-webview">
   <!-- CONTENT TAB OPEN -->
   <div id="open-status" class="tabcontent" style="border: 1px solid #ddd; border-top:0px;">
     <div class="table-responsive">
@@ -185,8 +185,8 @@
         </table>
       </div>
     </div>
-    <!-- END CONTEN TAB CLOSE -->
-      </div>
+  <!-- END CONTEN TAB CLOSE -->
+</div>
       @include('mobile-views.verifikator.riwayat_laporan')
 </div>
 @endsection
