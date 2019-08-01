@@ -25,7 +25,7 @@
             </tr>
             <tr>
               <td><label for=""> Section</label></td>
-              <td>  <select class="form-control " >
+              <td> <select class="form-control " onchange="showInputLevel(this)" >
                   <option>Business</option>
                   <option>Unit</option>
                   <option>Produksi</option>
@@ -41,14 +41,13 @@
                   <option>IER</option>
                   <option>Finance</option>
                   <option>IT</option>
-                  <option>Other</option>
-                </select></td>
+                  <option value="other">Other</option>
+                </select>
+                <input type="input" class="form-control" placeholder="Ketik disini" style="display:none;" id="other-level-input">
+              </td>
             </tr>
-
           </table>
-
         </form>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Update</button>

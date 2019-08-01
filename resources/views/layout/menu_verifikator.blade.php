@@ -23,7 +23,7 @@
   <a class="{{ request()->is('verifikator/statistik') ? 'active-btn' : '' }} nav-link" href="{{ url('/verifikator/statistik') }}"><i class="fa fa-bar-chart"></i> Statistik</a>
 </li>
 <li class="nav-item collap">
-  <a class="{{ request()->is('verifikator/greencard') ? 'active-btn' : '' }} nav-link" href="{{ url('/verifikator/greencard') }}"><i class="fa fa-credit-card-alt"> Data Greencard</a>
+  <a class="{{ request()->is('verifikator/greencard') ? 'active-btn' : '' }} nav-link" href="{{ url('/verifikator/greencard') }}"><i class="fa fa-credit-card-alt"></i> Data Greencard</a>
 </li>
 <li class="nav-item collap">
   <a class="{{ request()->is('verifikator/summary') ? 'active-btn' : '' }} nav-link" href="{{ url('/verifikator/summary') }}"><i class="fa fa-print"></i> Summary</a>

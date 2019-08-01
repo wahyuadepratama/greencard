@@ -184,8 +184,32 @@
         }
       }
 
+      function searchTableRowClose(){
+        var input, filter;
+        var table, tr, td, i, txtValue, tbody = [];
+        input = document.getElementById("myInputClose");
+        filter = input.value.toUpperCase();
+        filterElement = document.getElementById("searchTableClose");
+        container = filterElement.getElementsByClassName("container");
+          for (var a = 0; a < container.length; a++) {
+           td = container[a].getElementsByTagName("table").item(0);
+
+           txtValue = td.textContent || td.innerText;
+           console.log(txtValue);
+           if(td){
+             if (txtValue.toUpperCase().indexOf(filter) > -1) {
+               container[a].style.display="block";
+             }
+             else {
+               container[a].style.display="none";
+             }
+           }
+        }
+      }
+
       // menmapilkan other input pada Laporan Bahaya
       function showInputSection(select){
+        console.log(select.value);
        if(select.value=='other'){
         document.getElementById('other-section-input').style.display = "block";
        } else{
@@ -199,6 +223,7 @@
          document.getElementById('other-level-input').style.display = "none";
         }
       }
+
 
       </script>
 
