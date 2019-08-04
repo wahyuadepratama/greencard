@@ -2,6 +2,9 @@
   #menu-toggle{
     display: none;
   }
+  .navbar-collapse{
+  background-color: #34205f !important;
+  }
   #user-name-one{
     display: none;
   }
@@ -46,21 +49,10 @@
 
 }
 @media (max-width:800px){
-  /* .year{
-    position:relative;
-    right: 0px;
-    margin: 0px;
-    top: 60px!important;
+  canvas#chartStatus,canvas#chartPencapaian,canvas#chartLokasi,canvas#chartKta{
+    max-height: 550px !important;
+    max-width: 450px !important;
   }
-  .section.form-group{
-      margin: 0px;
-  }
-  .section-year{
-    grid-auto-rows:auto !important;
-    grid-template-areas:
-    "section ."
-    ". .";
-  } */
 
 }
 @media (min-width: 991px) {

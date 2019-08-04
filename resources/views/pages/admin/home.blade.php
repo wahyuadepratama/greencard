@@ -11,7 +11,7 @@
         <div class="card">
           <div class="card-body" onclick="window.location.href = '{{ url('/admin/lapor') }}'">
             <h5 class="card-title">
-            <img src="{{asset('svg/folder-open.svg')}}" alt="">
+            <span><i class="fa fa-volume-up" style="font-size:30px;color:red"></i></span>
             <span style="margin-left:10px">Laporan Bahaya</span>
             </h5>
           </div>
@@ -20,7 +20,8 @@
       <div class="col-sm-3">
         <div class="card">
           <div class="card-body" onclick="window.location.href = '{{ url('/admin/riwayat') }}'">
-            <h5 class="card-title"><img src="{{asset('svg/history.svg')}}" alt="">
+            <h5 class="card-title">
+              <span><i class="fa fa-history" style="font-size:30px;color:orange"></i></span>
               <span style="margin-left:10px">Riwayat Pelaporan</span>
             </h5>
           </div>
@@ -29,7 +30,8 @@
       <div class="col-sm-3">
         <div class="card">
           <div class="card-body" onclick="window.location.href = '{{ url('/admin/statistik') }}'">
-            <h5 class="card-title"><img src="{{asset('svg/stats-bars.svg')}}" alt="">
+            <h5 class="card-title">
+              <span><i class="fa fa-bar-chart" style="font-size:30px;color:#ff87cb"></i></span>
             <span style="margin-left:10px">Statistik</span>
            </h5>
           </div>
@@ -38,7 +40,8 @@
       <div class="col-sm-3">
         <div class="card">
           <div class="card-body" onclick="window.location.href = '{{ url('/admin/greencard') }}'">
-            <h5 class="card-title"><img src="{{asset('svg/database.svg')}}" alt="">
+            <h5 class="card-title">
+              <span><i class="fa fa-credit-card-alt" style="font-size:30px;color:lightgreen"></i></span>
             <span style="margin-left:10px">Data Greencard</span>
             </h5>
           </div>
@@ -47,7 +50,8 @@
       <div class="col-sm-3">
         <div class="card">
           <div class="card-body" onclick="window.location.href = '{{ url('/admin/summary') }}'">
-            <h5 class="card-title"><img src="{{asset('svg/database.svg')}}" alt="">
+            <h5 class="card-title">
+              <span><i class="fa fa-print" style="font-size:30px;color:#18bad9"></i></span>
             <span style="margin-left:10px">Summary</span>
             </h5>
           </div>
@@ -56,8 +60,9 @@
       <div class="col-sm-3">
         <div class="card">
           <div class="card-body" onclick="window.location.href = '{{ url('/admin/man-power') }}'">
-            <h5 class="card-title"><img src="{{asset('svg/database.svg')}}" alt="">
-            <span style="margin-left:10px">Data Man Power</span>
+            <h5 class="card-title">
+              <span><i class="fa fa-users" style="font-size:30px;color:#a269d9;"></i></span>
+             <span style="margin-left:10px">Data Man Power</span>
             </h5>
           </div>
         </div>
@@ -65,7 +70,7 @@
 
     </div>
 <br>
-    <div class="row" id="rank-wrapper">
+    <div id="rank-wrapper" class="table-responsive">
       <table class="table">
         <thead>
           <tr>

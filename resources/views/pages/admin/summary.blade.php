@@ -37,7 +37,7 @@
     </div>
   </div><br>
 
-  <div class="border p-4 mt-4">
+  <div class="border p-4 mt-4" style="background:white">
       <center><p>Download data pelaporan all section <b id="titleSummary"> </b></p></center>
       <div class="row">
         <div class="col-sm-3"></div>
