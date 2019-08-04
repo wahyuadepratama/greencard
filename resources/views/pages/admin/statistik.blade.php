@@ -30,7 +30,10 @@
 
       <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="card-body">
-          <canvas id="chartPencapaian" width="400" height="200"></canvas>
+          <!-- <canvas id="chartPencapaian"></canvas> -->
+          <div id="chartPencapaian" style="max-width: auto; height: 400px; margin: 0 auto"></div>
+          <button id="large">Large</button>
+         <button id="small">Small</button>
         </div>
       </div>
     </div>
@@ -44,7 +47,8 @@
       </div>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
         <div class="card-body">
-        <canvas id="chartKta" width="400" height="100"></canvas>
+        <div id="chartKta" style="max-width: auto; height: 400px; margin: 0 auto"></div>
+
         </div>
       </div>
     </div>
@@ -58,7 +62,9 @@
       </div>
       <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
         <div class="card-body">
-            <canvas id="chartLokasi" width="400" height="100"></canvas>
+            <div id="chartLokasi" style="max-width: auto; height: 400px; margin: 0 auto"></div>
+            <button id="largechartLokasi">Large</button>
+            <button id="smallchartLokasi">Small</button>
         </div>
       </div>
     </div>
@@ -72,8 +78,8 @@
       </div>
       <div id="collapseFourth" class="collapse" aria-labelledby="headingFourth" data-parent="#accordionExample">
         <div class="card-body">
+          <div id="chartStatus" style="max-width: auto; height: 400px; margin: 0 auto"></div>
 
-        <canvas id="chartStatus" width="400" height="100"></canvas>
 
         </div>
       </div>
@@ -82,129 +88,323 @@
   </div>
   <!-- END COLLAPSE -->
 </div>
+<style media="screen">
+</style>
 @endsection
 
 @section('js-chart')
 <script>
-var ctx = document.getElementById('chartPencapaian').getContext('2d');
-var ctx2 = document.getElementById('chartKta').getContext('2d');
-var ctx3 = document.getElementById('chartLokasi').getContext('2d');
-var ctx4 = document.getElementById('chartStatus').getContext('2d');
-var chartPencapaian = new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-        labels: [@php foreach ($reports as $report) {
-          $x = \App\Models\Section::where('id', $report->section_id)->first();
-          echo '"'. $x->name . '",';
-        } @endphp],
-        datasets: [{
-            label: '# Man Power in Section: ',
-            data: [@php foreach ($reports as $report) {
-              echo '"'. $report->section_count . '",';
-            } @endphp],
-            backgroundColor: [@php foreach ($reports as $report) {
-              echo "'".'rgba(255, 99, 132, 0.2)'."',";
-            } @endphp],
-            borderColor: [@php foreach ($reports as $report) {
-              echo "'".'rgba(255, 99, 132, 0.2)'."',";
-            } @endphp],
-            borderWidth: 1
-        }]
+var chart = Highcharts.chart('chartPencapaian', {
+    chart: {
+        type: 'bar',
+        scrollablePlotArea: {
+            minWidth:600 ,
+            scrollPositionX: 1
+        }
     },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-
-var chartKta = new Chart(ctx2, {
-    type: 'pie',
-    data: {
-        labels: ['Kondisi Tidak Aman', 'Tindakan Tidak Aman'],
-        datasets: [{
-            label: '# Total',
-            data: [{{ $kta }}, {{ $tta }}],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)'
-            ],
-            borderWidth: 1
-        }]
-    }
-});
-
-var chartLokasi = new Chart(ctx3, {
-    type: 'bar',
-    data: {
-        labels: ['Office', 'Warehouse', 'Workshop', 'Area Tambang (OB)', 'Area Tambang (Coal)', 'Area Mess', 'Pit Stop / Shutdown', 'Area Lainnya'],
-        datasets: [{
-            label: '# Man power at this location',
-            data: [{{ $gk->office }}, {{ $gk->warehouse }}, {{ $gk->workshop }}, {{ $gk->tambang_ob }}, {{ $gk->tambang_coal }}, {{ $gk->mess }}, {{ $gk->pit_stop }}, {{ $gk->area_lainnya }}],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(190, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(190, 159, 64, 0.2)'
-            ],
-            borderWidth: 1
-        }]
+    responsive:{
+            // rules:[{
+            //     chartOptions:undefined
+            //     condition:{
+            //           callback:undefined
+            //           maxHeight:undefined
+            //           maxWidth:100
+            //           minHeight:0
+            //           minWidth:70
+            //     }
+            // }]
     },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+    title: {
+        text: 'Historic World Population by Region',
+        align:'left'
+    },
+    subtitle: {
+        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+    },
+    xAxis: {
+        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+        title: {
+            text: null
         }
-    }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Population (millions)',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' millions'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Year 1800',
+        data: [107, 31, 635, 203, 2]
+    }, {
+        name: 'Year 1900',
+        data: [133, 156, 947, 408, 6]
+    }, {
+        name: 'Year 2000',
+        data: [814, 841, 3714, 727, 31]
+    }, {
+        name: 'Year 2016',
+        data: [1216, 1001, 4436, 738, 40]
+    }]
 });
 
-var chartStatus = new Chart(ctx4, {
-  type: 'pie',
-  data: {
-      labels: ['Open', 'Close'],
-      datasets: [{
-          label: '# Total',
-          data: [{{ $open }}, {{ $close }}],
-          backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)'
-          ],
-          borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)'
-          ],
-          borderWidth: 1
-      }]
-  },
-  options: {
-        legendCallback: function(chart) {
-            "<h5>testestes</h5>";
+var chartKta = Highcharts.chart('chartKta', {
+    chart: {
+        type: 'pie',
+        scrollablePlotArea: {
+            minWidth:600 ,
+            scrollPositionX: 1
         }
-    }
+    },
+    responsive:{
+            // rules:[{
+            //     chartOptions:undefined
+            //     condition:{
+            //           callback:undefined
+            //           maxHeight:undefined
+            //           maxWidth:100
+            //           minHeight:0
+            //           minWidth:70
+            //     }
+            // }]
+    },
+    title: {
+        text: 'Historic World Population by Region',
+        align:'left'
+    },
+    subtitle: {
+        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+    },
+    xAxis: {
+        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Population (millions)',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' millions'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Year 1800',
+        data: [107, 31, 635, 203, 2]
+    }, {
+        name: 'Year 1900',
+        data: [133, 156, 947, 408, 6]
+    }, {
+        name: 'Year 2000',
+        data: [814, 841, 3714, 727, 31]
+    }, {
+        name: 'Year 2016',
+        data: [1216, 1001, 4436, 738, 40]
+    }]
 });
+
+var chartLokasi = Highcharts.chart('chartLokasi', {
+    chart: {
+        type: 'bar',
+        scrollablePlotArea: {
+            minWidth:600 ,
+            scrollPositionX: 1
+        }
+    },
+    responsive:{
+            // rules:[{
+            //     chartOptions:undefined
+            //     condition:{
+            //           callback:undefined
+            //           maxHeight:undefined
+            //           maxWidth:100
+            //           minHeight:0
+            //           minWidth:70
+            //     }
+            // }]
+    },
+    title: {
+        text: 'Historic World Population by Region',
+        align:'left'
+    },
+    subtitle: {
+        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+    },
+    xAxis: {
+        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Population (millions)',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' millions'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Year 1800',
+        data: [107, 31, 635, 203, 2]
+    }, {
+        name: 'Year 1900',
+        data: [133, 156, 947, 408, 6]
+    }, {
+        name: 'Year 2000',
+        data: [814, 841, 3714, 727, 31]
+    }, {
+        name: 'Year 2016',
+        data: [1216, 1001, 4436, 738, 40]
+    }]
+});
+
+var chartStatus = Highcharts.chart('chartStatus', {
+    chart: {
+        type: 'pie',
+        scrollablePlotArea: {
+            minWidth:600 ,
+            scrollPositionX: 1
+        }
+    },
+    responsive:{
+            // rules:[{
+            //     chartOptions:undefined
+            //     condition:{
+            //           callback:undefined
+            //           maxHeight:undefined
+            //           maxWidth:100
+            //           minHeight:0
+            //           minWidth:70
+            //     }
+            // }]
+    },
+    title: {
+        text: 'Historic World Population by Region',
+        align:'left'
+    },
+    subtitle: {
+        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+    },
+    xAxis: {
+        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Population (millions)',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' millions'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Year 1800',
+        data: [107, 31, 635, 203, 2]
+    }, {
+        name: 'Year 1900',
+        data: [133, 156, 947, 408, 6]
+    }, {
+        name: 'Year 2000',
+        data: [814, 841, 3714, 727, 31]
+    }, {
+        name: 'Year 2016',
+        data: [1216, 1001, 4436, 738, 40]
+    }]
+});
+
+$('#small').click(function () {
+    chart.setSize($('.card-body').width()/2, 400);
+});
+
+$('#large').click(function () {
+    chart.setSize($('.card-body').width(), 400);
+});
+
+// $('#largechartLokasi').click(function () {
+//     chartLokasi.setSize($('.card-body').width()/2, 400);
+// });
+//
+// $('#smallchartLokasi').click(function () {
+//     chartLokasi.setSize($('.card-body').parent.width(), 400);
+// });
 
 </script>
 @endsection

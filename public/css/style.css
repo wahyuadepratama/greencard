@@ -1,21 +1,25 @@
 .container-fluid.login{
-  background: white;
+  background-image: linear-gradient(to right, #f000d4, #f73cd0, #fb59cc, #fe71cb, #ff87cb);
   height: 100vh;
   width: 100vw;
 }
 .container.login{
-  background: white;
+  background: #34205f ;
   max-width: 350px;
   padding: 20px;
   align-self: center;
+  border-radius: 10px;
   /* border: 1px solid #ddd;
   border-radius: 15px; */
 }
 
 body {
   overflow-x: hidden;
-}
 
+}
+.container-fluid{
+      background: #f2f7fb
+}
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
@@ -61,13 +65,48 @@ body {
 }
 .active-btn{
   font-weight: bold;
+  color: white;
+  background-image: linear-gradient(to right, #f000d4, #f73cd0, #fb59cc, #fe71cb, #ff87cb);
+}
+.bg-light {
+  background-color: white !important;
+}
+.navbar-light.bg-light{
+  background-color: #ff87cb !important;
+}
+#sidebar-wrapper,.list-group-item.bg-light{
+  background-color: #34205f !important;
+  color: white;
+}
+
+a.list-group-item.bg-light:hover{
+  background-image: linear-gradient(to right, #f000d4, #f73cd0, #fb59cc, #fe71cb, #ff87cb);
+  color: white;
+}
+#sidebar-menu>a.list-group-item.bg-light>i:hover,#sidebar-menu>a.list-group-item.bg-light>i:focus{
+  color: white !important;
+}
+#page-content-wrapper{
+  background:#f2f7fb;
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.border-bottom{
+  border: 0px !important;
+}
+div.bg-light.border-right{
+  border: 0px !important;
+}
+li.nav-item>a>span{
+  color: white
 }
 .report-form-container{
   width: 100%;
   margin-top: 30px;
   margin-bottom: 30px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #e8eef1;
+  background: white;
+
+
 }
 #open-status,#close-status{
   padding: 20px;
@@ -167,8 +206,11 @@ button[data-toggle="collapse"].btn-link:active{
   text-decoration: none;
 }
 .btn-primary{
-  background-color: #5ebbf7;
-  border-color: #4b9ace;
+  background-color: #34205f !important;
+  border: 0px;
+}
+button.btn-primary:hover{
+background-image: linear-gradient(to right, #f000d4, #f73cd0, #fb59cc, #fe71cb, #ff87cb);
 }
 .table-mobileview{
   font-size: 0.9em;
@@ -222,4 +264,73 @@ button[data-toggle="collapse"].btn-link:active{
 }
 a.nav-link.dropdown-toggle{
   color: rgba(0,0,0,.5);
+}
+.fa.fa-home{
+ color: white
+}
+
+.fa.fa-volume-up{
+ color:red
+}
+
+.fa.fa-history{
+ color:orange
+}
+.fa.fa-bar-chart{
+ color:#ff87cb
+}
+.fa.fa-credit-card-alt{
+ color:lightgreen
+}
+.fa.fa-print{
+color:#18bad9
+}
+.fa.fa-users{
+ color:#a269d9
+}
+#greencard-mobileview,#greencard-webview,#rank-wrapper{
+  background: white
+}
+
+#rank-wrapper{
+  background: white;
+  padding: 15px;
+  margin: 4px;
+  border:  1px solid #e8eef1;
+}
+
+.navbar-expand-lg{
+padding: 0px;
+}
+.nav-item .collap{
+  padding: 5px;
+}
+.nav-item.collap>a.nav-link{
+  padding: 10px 15px 10px 15px;
+  color: white
+}
+.navbar-toggler{
+  margin-right:15px;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #34205f;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:#ff87cb
 }
