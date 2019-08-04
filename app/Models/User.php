@@ -15,8 +15,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $primaryKey = 'nik';
     protected $fillable = [
-        'nik','brl', 'name', 'section', 'position', 'role_id', 'password',
+        'nik','brl', 'name', 'section_id', 'position', 'role_id', 'password',
     ];
 
     /**
@@ -30,6 +31,10 @@ class User extends Authenticatable
 
     public function role(){
       return $this->belongsTo('App\Models\Role','role_id');
+    }
+
+    public function section(){
+      return $this->belongsTo('App\Models\Section','section_id');
     }
 
     public function report(){

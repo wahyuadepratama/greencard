@@ -52,13 +52,13 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-      if ($request->password == null) {        
+      if ($request->password == null) {
         $nik = User::where('nik', $request->nik)->first();
-        if ($nik) {
+        if ($nik->role_id == 3) {
           session(['login' => $nik]);
           return redirect('/user/home');
         }else{
-          return back()->with('error', 'NIK Belum Terdaftar!');
+          return back()->with('error', 'Gagal login!');
         }
       }else{
         $credentials = $request->only('nik', 'password');

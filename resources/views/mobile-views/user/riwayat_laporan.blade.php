@@ -2,18 +2,7 @@
     <div id="open-status" class="tabcontent-mobile" style="border: 1px solid #ddd; border-top:0px;">
     <div class="row">
       <div class="col">
-        <div class="form-inline">
-          <label for="">Show &nbsp;</label>
-            <select class="custom-select custom-select-sm form-control form-control-sm" onchange="showSomeData()"id="showData">
-              <option value="5">5</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-inline float-right">
+        <div class="form-inline float-left">
           <div class="form-inline">
             <label for="">Search: &nbsp;</label>
             <input type="search" class="form-control form-control-sm" id="myInput" onkeyup="searchTableRow()" >
@@ -23,95 +12,32 @@
     </div>
 
    <div id="searchTable">
+     @forelse($open as $mopen)
       <div class="container border pt-2 pb-2 mt-3">
         <table width="100%" class="table-mobileview" id="tabelku">
           <tr>
-            <th>#1</th>
-            <td class="text-right">12 November 2019</td>
+            <th>#{{ $mopen->id }}</th>
+            <td class="text-right">{{ $mopen->date }}</td>
           </tr>
           <tr>
             <th>Lokasi</th>
-            <td class="text-right">Area tambang</td>
+            <td class="text-right">{{ $mopen->location }}</td>
           </tr>
           <tr>
             <th>Kategori Bahaya</th>
-            <td class="text-right">Tindakan Tidak Aman</td>
+            <td class="text-right">{{ $mopen->danger_category }}</td>
           </tr>
         </table>
         <br>
         <div class="form-inline">
-          <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#detail">Detail</button>
-          <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
+          <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail" onclick="loadModal({{ $mopen->id }})">
+            Detail
+          </button>
         </div>
       </div>
+    @empty
 
-      <div class="container border pt-2 pb-2 mt-3">
-        <table width="100%" class="table-mobileview">
-          <tr>
-            <th>#1</th>
-            <td class="text-right">13 November 2019</td>
-          </tr>
-          <tr>
-            <th>Lokasi</th>
-            <td class="text-right">Area tambang</td>
-          </tr>
-          <tr>
-            <th>Kategori Bahaya</th>
-            <td class="text-right">Tindakan Tidak Aman</td>
-          </tr>
-
-        </table>
-        <br>
-        <div class="form-inline">
-          <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#detail">Detail</button>
-          <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
-        </div>
-    </div>
-
-      <div class="container border pt-2 pb-2 mt-3">
-        <table width="100%" class="table-mobileview">
-          <tr>
-            <th>#1</th>
-            <td class="text-right">18 November 2019</td>
-          </tr>
-          <tr>
-            <th>Lokasi</th>
-            <td class="text-right">Area tambang</td>
-          </tr>
-          <tr>
-            <th>Kategori Bahaya</th>
-            <td class="text-right">Tindakan Tidak Aman</td>
-          </tr>
-
-        </table>
-        <br>
-        <div class="form-inline">
-          <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#detail">Detail</button>
-          <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
-        </div>
-    </div>
-
-      <div class="container border pt-2 pb-2 mt-3">
-        <table width="100%" class="table-mobileview">
-          <tr>
-            <th>#1</th>
-            <td class="text-right">20 November 2019</td>
-          </tr>
-          <tr>
-            <th>Lokasi</th>
-            <td class="text-right">Area tambang</td>
-          </tr>
-          <tr>
-            <th>Kategori Bahaya</th>
-            <td class="text-right">Tindakan Tidak Aman</td>
-          </tr>
-        </table>
-        <br>
-        <div class="form-inline">
-            <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#detail">Detail</button>
-            <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
-        </div>
-    </div>
+    @endforelse
  </div>
 
   </div>
@@ -122,18 +48,7 @@
   <div id="close-status" class="tabcontent-mobile" style="border: 1px solid #ddd; border-top:0px;">
     <div class="row">
       <div class="col">
-        <div class="form-inline">
-          <label for="">Show &nbsp;</label>
-            <select class="custom-select custom-select-sm form-control form-control-sm" name="">
-              <option value="">10</option>
-              <option value="">25</option>
-              <option value="">50</option>
-              <option value="">100</option>
-            </select>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-inline float-right">
+        <div class="form-inline float-left">
           <div class="form-inline">
             <label for="">Search: &nbsp;</label>
             <input type="search" class="form-control form-control-sm" placeholder="" id="myInputClose" onkeyup="searchTableRowClose()">
@@ -141,86 +56,37 @@
         </div>
       </div>
     </div>
-<div id="searchTableClose">
-      <div class="container border m-2 p-4">
-        <table width="100%" class="table-mobileview">
-          <tr>
-            <td>#1</td>
-            <td class="text-right">17 November 2019</td>
-          </tr>
-          <tr>
-            <td>Lokasi</td>
-            <td class="text-right">Area tambang</td>
-          </tr>
-          <tr>
-            <td>Kategori Bahaya</td>
-            <td class="text-right">Tindakan Tidak Aman</td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <br>
-              <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
-              </div>
-            </td>
-          </tr>
-        </table>
-        <br>
-      </div>
-
-      <div class="container border m-2 p-4">
-        <table width="100%" class="table-mobileview">
-          <tr>
-            <td>#2</td>
-            <td class="text-right">12 November 2019</td>
-          </tr>
-          <tr>
-            <td>Lokasi</td>
-            <td class="text-right">Area tambang</td>
-          </tr>
-          <tr>
-            <td>Kategori Bahaya</td>
-            <td class="text-right">Tindakan Tidak Aman</td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <br>
-              <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
-              </div>
-            </td>
-          </tr>
-        </table>
-        <br>
-      </div>
-
-      <div class="container border m-2 p-4">
-        <table width="100%" class="table-mobileview">
-          <tr>
-            <td>#3</td>
-            <td class="text-right">12 November 2019</td>
-          </tr>
-          <tr>
-            <td>Lokasi</td>
-            <td class="text-right">Area tambang</td>
-          </tr>
-          <tr>
-            <td>Kategori Bahaya</td>
-            <td class="text-right">Tindakan Tidak Aman</td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <br>
-              <div class="form-inline float-right">
-                <button type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">Detail</button>
-                <button type="button" name="button" class="btn btn-primary ml-2">Open</button>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
+    <div id="searchTableClose">
+        @forelse($close as $mclose)
+          <div class="container border m-2 p-3">
+            <table width="100%" class="table-mobileview">
+              <tr>
+                <td>#{{ $mclose->id }}</td>
+                <td class="text-right">{{ $mclose->date }}</td>
+              </tr>
+              <tr>
+                <td>Lokasi</td>
+                <td class="text-right">{{ $mclose->location }}</td>
+              </tr>
+              <tr>
+                <td>Kategori Bahaya</td>
+                <td class="text-right">{{ $mclose->danger_category }}</td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <br>
+                  <div class="form-inline">
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail" onclick="loadModal({{ $mclose->id }})">
+                      Detail
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <br>
+          </div>
+          @empty          
+          @endforelse
     </div>
   </div>
     <!-- END CONTEN TAB CLOSE -->

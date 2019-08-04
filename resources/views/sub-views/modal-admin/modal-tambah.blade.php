@@ -9,49 +9,53 @@
         </button>
       </div>
       <div class="modal-body">
-        <form class="" action="index.html" method="post">
+        <form action="{{ url('/admin/man-power/store') }}" method="post"> @csrf
           <table width="100%" class="form-add-man">
             <tr>
+              <td><label for=""> Hak Akses</label></td>
+              <td>
+                <select name="role" class="form-control">
+                  <option value="3">User</option>
+                  <option value="2">Verifikator</option>
+                  <option value="1">Admin</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
               <td><label for=""> Nama</label></td>
-              <td><input type="text" name="" value="" class="form-control"></td>
+              <td><input type="text" name="name" value="{{ old('name') }}" class="form-control"></td>
             </tr>
             <tr>
               <td><label for=""> NIK</label></td>
-              <td><input type="text" name="" value="" class="form-control"></td>
+              <td><input type="text" name="nik" value="{{ old('nik') }}" class="form-control"></td>
             </tr>
             <tr>
               <td>  <label for="">Jabatan</label></td>
-              <td><input type="text" name="" value="" class="form-control"></td>
+              <td><input type="text" name="position" value="{{ old('position') }}" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>  <label for="">BRL/Level</label></td>
+              <td><input type="text" name="brl" value="{{ old('brl') }}" placeholder="1 / 2 / 3 / 4 / 5 / 6 / Vendor / Other" class="form-control"></td>
             </tr>
             <tr>
               <td><label for=""> Section</label></td>
-              <td> <select class="form-control" onchange="showInputSection(this)">
-                  <option>Business</option>
-                  <option>Unit</option>
-                  <option>Produksi</option>
-                  <option>Engineering</option>
-                  <option>Plant</option>
-                  <option>MCD</option>
-                  <option>PSCM</option>
-                  <option>LC&D</option>
-                  <option>SHE</option>
-                  <option>BE</option>
-                  <option>GS</option>
-                  <option>HR</option>
-                  <option>IER</option>
-                  <option>Finance</option>
-                  <option>IT</option>
+              <td>
+                <select name="section" class="form-control" onchange="showInputSection(this)">
+                  @forelse($sections as $section)
+                  <option value="{{ $section->id }}">{{ $section->name }}</option>
+                  @empty
+                  @endforelse
                   <option value="other">Other</option>
                 </select>
-                <input type="input" class="form-control" placeholder="Ketik disini" style="display:none;" id="other-section-input">
+                <input type="input" class="form-control" name="other" placeholder="Ketik nama section disini" style="display:none; margin-top: 5px" id="other-section-input">
               </td>
             </tr>
           </table>
-        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Tambah</button>
+        <button type="submit" class="btn btn-primary">Tambah</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
