@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
-{
+{  
   protected $fillable = [
       'id', 'nik', 'date', 'time', 'location', 'detail_location', 'danger_category', 'danger_code', 'description', 'risk',
       'action', 'status', 'created_at', 'updated_at',
@@ -13,7 +13,7 @@ class Report extends Model
 
   public function getCreatedAtAttribute()
   {
-      return \Carbon\Carbon::parse($this->attributes['created_at'])
+      return \Carbon\Carbon::parse($this->attributes['date'])
          ->format('d, M Y H:i');
   }
 
@@ -24,6 +24,6 @@ class Report extends Model
 
   public function user(){
     return $this->belongsTo('App\Models\User','nik');
-  }  
+  }
 
 }

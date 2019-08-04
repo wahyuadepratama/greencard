@@ -29,8 +29,7 @@
           <a class="nav-link dropdown-toggle" href="#"role="button" data-toggle="dropdown">
             <img src="{{asset('img/reza.jpg')}}" alt="" class="rounded-circle" height="30px" width="30px"></a>
             <div class="dropdown-menu dropdown-menu-right" >
-              <a class="dropdown-item" href="#">{{ session('login')->name }}</a>
-
+              <a class="dropdown-item" href="#">{{ session('login')->name }} ({{ session('login')->role->name }})</a>
               <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log out</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -49,9 +48,9 @@
               <span style="margin-right:10px" >Welcome, {{ session('login')->name }} </span>
               <img src="{{asset('img/reza.jpg')}}" alt="" class="rounded-circle"  height="30px" width="30px"></a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                <a class="dropdown-item" href="#">{{ session('login')->nik }} ({{ session('login')->role_id }})</a>
-
+                <a class="dropdown-item" href="#">{{ session('login')->role->name }}</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">{{ session('login')->section->name }} ({{ session('login')->nik }})</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log out</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -156,6 +156,23 @@ return [
         'status' => [
             'required' => 'Status tidak boleh kosong',
         ],
+        'role' => [
+            'required' => 'Role tidak boleh kosong',
+        ],
+        'name' => [
+            'required' => 'Nama tidak boleh kosong',
+        ],
+        'nik' => [
+            'required' => 'NIK tidak boleh kosong',
+            'unique' => 'NIK sudah terdaftar',
+            'integer' => 'NIK harus berupa angka',
+        ],
+        'position' => [
+            'required' => 'Jabatan tidak boleh kosong',
+        ],
+        'brl' => [
+            'required' => 'BRL/Level harus diisi',
+        ],
     ],
 
     /*

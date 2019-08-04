@@ -31,6 +31,12 @@ Route::group(['middleware' => ['auth', 'authUser']], function () {
   Route::post('/user/lapor', 'User\DangerReportController@store');
 
   Route::get('/user/riwayat/', 'User\HistoryReportController@index');
+  Route::post('/riwayat/open/data/search', 'User\HistoryReportController@searchOpenHistory');
+  Route::post('/riwayat/close/data/search', 'User\HistoryReportController@searchCloseHistory');
+  Route::post('/riwayat/open/data/mobile/search', 'User\HistoryReportController@searchOpenHistoryMobile');
+  Route::post('/riwayat/close/data/mobile/search', 'User\HistoryReportController@searchCloseHistoryMobile');
+  Route::post('/section/modal', 'User\HistoryReportController@loadModal');
+
   Route::get('/user/statistik/', 'User\StatistikController@index');
   Route::get('/user/summary/', 'User\SummaryController@index');
 });
@@ -46,10 +52,32 @@ Route::group(['middleware' => ['auth', 'authAdmin']], function () {
   Route::post('/admin/lapor/', 'Admin\DangerReportController@store');
 
   Route::get('/admin/riwayat/', 'Admin\HistoryReportController@index');
+  Route::post('/riwayat/open/data/search', 'Admin\HistoryReportController@searchOpenHistory');
+  Route::post('/riwayat/close/data/search', 'Admin\HistoryReportController@searchCloseHistory');
+  Route::post('/riwayat/open/data/mobile/search', 'Admin\HistoryReportController@searchOpenHistoryMobile');
+  Route::post('/riwayat/close/data/mobile/search', 'Admin\HistoryReportController@searchCloseHistoryMobile');
+  Route::post('/section/modal', 'User\HistoryReportController@loadModal');
+
   Route::get('/admin/statistik/', 'Admin\StatistikController@index');
+
   Route::get('/admin/summary/', 'Admin\SummaryController@index');
+  Route::get('/admin/summary/report/export/excel/{year}/{month}', 'Admin\SummaryController@exportToExcel');
+  Route::get('/admin/summary/report/export/pdf/{year}/{month}', 'Admin\SummaryController@exportToPDF');
+
   Route::get('/admin/greencard/', 'Admin\GreencardController@index');
+  Route::post('/greencard/open/data/search', 'Admin\GreencardController@searchOpenHistory');
+  Route::post('/greencard/close/data/search', 'Admin\GreencardController@searchCloseHistory');
+  Route::post('/greencard/open/data/mobile/search', 'Admin\GreencardController@searchOpenHistoryMobile');
+  Route::post('/greencard/close/data/mobile/search', 'Admin\GreencardController@searchCloseHistoryMobile');
+  Route::post('/greencard/change-status', 'Admin\GreencardController@changeStatus');
+
   Route::get('/admin/man-power/', 'Admin\ManPowerController@index');
+  Route::post('/admin/man-power/store', 'Admin\ManPowerController@store');
+  Route::get('/admin/man-power/search/{input}', 'Admin\ManPowerController@search');
+  Route::post('/admin/man-power/load-all-data', 'Admin\ManPowerController@loadAllData');
+  Route::post('/admin/man-power/load-all-data/mobile', 'Admin\ManPowerController@loadAllDataMobile');
+  Route::post('/admin/man-power/destroy', 'Admin\ManPowerController@destroy');
+  Route::post('/admin/man-power/update', 'Admin\ManPowerController@update');
 });
 
 /*

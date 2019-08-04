@@ -9,11 +9,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Apakah anda yakin ingin menghapus data ini?</p>
+        <p>Apakah anda yakin ingin menghapus data <b id="mpName">name</b>?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary">Hapus</button>
+        <button type="button" id="mpDelete" data-dismiss="modal" class="btn btn-primary">Hapus</button>
       </div>
     </div>
   </div>

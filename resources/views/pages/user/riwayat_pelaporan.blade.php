@@ -9,31 +9,18 @@
     <div class="section-year form-inline">
       <div class="section form-group">
         <label for="">Section &nbsp;</label>
-        <select class="form-control " >
-          <option>Business</option>
-          <option>Unit</option>
-          <option>Produksi</option>
-          <option>Engineering</option>
-          <option>Plant</option>
-          <option>MCD</option>
-          <option>PSCM</option>
-          <option>LC&D</option>
-          <option>SHE</option>
-          <option>BE</option>
-          <option>GS</option>
-          <option>HR</option>
-          <option>IER</option>
-          <option>Finance</option>
-          <option>IT</option>
-          <option>Other</option>
+        <select class="form-control" id="sectionOptionOpen" onchange="searchSectionData()">
+          @foreach($sections as $section)
+            <option value="{{ $section->id }}">{{ $section->name }}</option>
+          @endforeach
         </select>
       </div>
       <div class="year" style="margin-left:10px;">
-        <select class="form-control" >
-          <option> 2019</option>
-          <option value="">2020</option>
-          <option value="">2021</option>
-          <option value="">2022</option>
+        <select class="form-control" id="sectionOptionYear" onchange="searchSectionData()">
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
         </select>
       </div>
     </div>
@@ -64,48 +51,24 @@
           </tr>
         </thead>
         <tbody>
+          @forelse($open as $mOpen)
           <tr>
-            <th scope="row">1</th>
-            <td>Paaapp</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">{{ $mOpen->id }}</th>
+            <td>{{ $mOpen->date }}</td>
+            <td>{{ $mOpen->location }}</td>
+            <td>{{ $mOpen->danger_category }}</td>
             <td>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">
-                Detail
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail"
+                onclick="loadModal({{ $mOpen->id }})"> Detail
               </button>
             </td>
             <td>
-              Open
+              {{ $mOpen->status }}
             </td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Yola</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">
-                Detail
-              </button>
-            </td>
-            <td>
-              Open
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">
-                Detail
-              </button>
-            </td>
-            <td>
-              Open
-            </td>
-          </tr>
+          @empty
+
+          @endforelse
         </tbody>
     </table>
       </div>
@@ -127,48 +90,23 @@
             </tr>
           </thead>
           <tbody>
+            @forelse($close as $mClose)
             <tr>
-              <th scope="row">1</th>
-              <td>Wahyu</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <th scope="row">{{ $mClose->id }}</th>
+              <td>{{ $mClose->date }}</td>
+              <td>{{ $mClose->location }}</td>
+              <td>{{ $mClose->danger_category }}</td>
               <td>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">
+                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail" onclick="loadModal({{ $mClose->id }})">
                   Detail
                 </button>
               </td>
               <td>
-                Open
+                {{ $mClose->status }}
               </td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Yola</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">
-                  Detail
-                </button>
-              </td>
-              <td>
-                Open
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detail">
-                  Detail
-                </button>
-              </td>
-              <td>
-                Open
-              </td>
-            </tr>
+            @empty
+            @endforelse
           </tbody>
         </table>
       </div>
@@ -180,3 +118,98 @@
 @endsection
 
 @include('sub-views.modal-user.modal-detail')
+
+@section('js-ajax')
+  <script type="text/javascript">
+
+    function searchSectionData(){
+      var sectionChoose = document.getElementById('sectionOptionOpen').value;
+      var sectionYear = document.getElementById('sectionOptionYear').value;
+        swal({
+          text: "Please waiting...",
+          buttons: false,
+          timer: 2000
+        });
+
+      $.ajax({ /* THEN THE AJAX CALL */
+        url: "/riwayat/open/data/search",
+        method : "POST",
+        data:{'section':sectionChoose, 'year': sectionYear, _token: '{{csrf_token()}}'},
+        async : true,
+        dataType : 'text',
+        success: function(data){
+          $('#open-table-data').dataTable().fnClearTable();
+          $('#open-table-data').DataTable().destroy();
+          $('#open-table-data').find('tbody').append(data);
+          $('#open-table-data').DataTable().draw();
+        }
+      });
+
+      $.ajax({ /* THEN THE AJAX CALL */
+        url: "/riwayat/close/data/search",
+        method : "POST",
+        data:{'section':sectionChoose, 'year': sectionYear, _token: '{{csrf_token()}}'},
+        async : true,
+        dataType : 'text',
+        success: function(data){
+          $('#close-table-data').dataTable().fnClearTable();
+          $('#close-table-data').DataTable().destroy();
+          $('#close-table-data').find('tbody').append(data);
+          $('#close-table-data').DataTable().draw();
+        }
+      });
+
+      $.ajax({ /* THEN THE AJAX CALL */
+        url: "/riwayat/open/data/mobile/search",
+        method : "POST",
+        data:{'section':sectionChoose, 'year': sectionYear, _token: '{{csrf_token()}}'},
+        async : true,
+        dataType : 'text',
+        success: function(data){
+          $('#searchTable').html(data);
+        }
+      });
+
+      $.ajax({ /* THEN THE AJAX CALL */
+        url: "/riwayat/close/data/mobile/search",
+        method : "POST",
+        data:{'section':sectionChoose, 'year': sectionYear, _token: '{{csrf_token()}}'},
+        async : true,
+        dataType : 'text',
+        success: function(data){
+          $('#searchTableClose').html(data);
+        }
+      });
+    }
+
+    function loadModal(id) {
+      $.ajax({ /* THEN THE AJAX CALL */
+          url: "/section/modal",
+          method : "POST",
+          data:{'id':id, _token: '{{csrf_token()}}'},
+          async : true,
+          success: function(data){
+            $('#modalStatus').html(data[0]['status']);
+            if (data[0]['status'] == 'Close') {              
+              $('#modalStatus').attr('class', 'text-danger');
+            }else{
+              $('#modalStatus').attr('class', 'text-success');
+            }
+            $('#modalId').html(data[0]['id']);
+            $('#modalPelapor').html(data[0]['name']);
+            $('#modalSection').html(data[0]['section']);
+            $('#modalBrl').html(data[0]['brl']);
+            $('#modalTanggal').html(data[0]['date']);
+            $('#modalWaktu').html(data[0]['time']);
+            $('#modalLokasi').html(data[0]['location']);
+            $('#modalDetailLokasi').html(data[0]['detail_location']);
+            $('#modalKategoriBahaya').html(data[0]['danger_category']);
+            $('#modalDeskripsiBahaya').html(data[0]['description']);
+            $('#modalRisiko').html(data[0]['risk']);
+            $('#modalKodeBahaya').html(data[0]['danger_code']);
+            $('#modalTindakanPerbaikan').html(data[0]['action']);
+          }
+        });//end ajax
+      } //end function
+  </script>
+@endsection
