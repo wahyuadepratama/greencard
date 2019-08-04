@@ -59,7 +59,10 @@ Route::group(['middleware' => ['auth', 'authAdmin']], function () {
   Route::post('/section/modal', 'User\HistoryReportController@loadModal');
 
   Route::get('/admin/statistik/', 'Admin\StatistikController@index');
+
   Route::get('/admin/summary/', 'Admin\SummaryController@index');
+  Route::get('/admin/summary/report/export/excel/{year}/{month}', 'Admin\SummaryController@exportToExcel');
+  Route::get('/admin/summary/report/export/pdf/{year}/{month}', 'Admin\SummaryController@exportToPDF');
 
   Route::get('/admin/greencard/', 'Admin\GreencardController@index');
   Route::post('/greencard/open/data/search', 'Admin\GreencardController@searchOpenHistory');
