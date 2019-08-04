@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2019 at 09:53 AM
+-- Generation Time: Aug 04, 2019 at 10:01 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -2047,7 +2047,7 @@ INSERT INTO `users` (`nik`, `password`, `role_id`, `name`, `brl`, `position`, `s
 (90002953, '$2y$12$Rt7cwx0EO5UPu0BZ0UqobuBpjvvt1medOhL46Lx8GxuhOFgOYwozG', 1, 'Aulia Nur Pratiwi', '4', 'BMDP SHE', 15, '2019-08-02 09:46:51', NULL),
 (90002956, '$2y$12$Rt7cwx0EO5UPu0BZ0UqobuBpjvvt1medOhL46Lx8GxuhOFgOYwozG', 3, 'Achmid Anisa Brata', '4', 'BMDP SHE', 15, '2019-08-02 09:46:52', NULL),
 (90002963, '$2y$12$Rt7cwx0EO5UPu0BZ0UqobuBpjvvt1medOhL46Lx8GxuhOFgOYwozG', 3, 'Bela Akene', '4', 'BMDP Engineering', 3, '2019-08-02 09:46:52', NULL),
-(1511521024, '$2y$10$cGP5ETipCFZtvYLrWcXSaOUARClAkHW9CYYZFIn7kTuzDxP/n3Os.', 3, 'Wahyu ade pratama', '2', 'Contoh Jabatan', 1, '2019-08-03 19:00:49', '2019-08-04 01:00:41');
+(1511521024, '$2y$10$cGP5ETipCFZtvYLrWcXSaOUARClAkHW9CYYZFIn7kTuzDxP/n3Os.', 1, 'Wahyu ade pratama', '2', 'Contoh Jabatan', 1, '2019-08-03 19:00:49', '2019-08-04 01:00:41');
 
 --
 -- Indexes for dumped tables
