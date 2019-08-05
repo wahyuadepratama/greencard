@@ -135,7 +135,14 @@
       $('#updateName').attr('value', name);
       $('#updateNik').attr('value', nik);
       $('#updatePosition').attr('value', position);
-      $('#updateBrl').attr('value', brl);      
+      $('#updateBrl').attr('value', brl);
+      $("#updateRole").val(role);
+      $("#updateSection").val(section);
+      if (role != 3) {
+        $('#viewPass').css('display', '');
+      }else{
+        $('#viewPass').css('display', 'none');
+      }
     }
 
     function showModalDestroy(id, name) {

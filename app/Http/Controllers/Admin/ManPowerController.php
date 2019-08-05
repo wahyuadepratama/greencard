@@ -154,6 +154,12 @@ class ManPowerController extends Controller
           'section' => 'required',
       ]);
 
+      if (session('login')->role_id == 1) {
+        if ($request->role != session('login')->role_id) {
+          return back()->with('success', 'Pengecekan berhasil! Namun anda tidak bisa mengubah role untuk diri sendiri karena anda sedang login sebagai administrator!');
+        }
+      }
+
       $user = User::where('nik', $request->nik)->first();
       if ($user) {
         $user->role_id = $request->role;
@@ -161,6 +167,11 @@ class ManPowerController extends Controller
         $user->position = $request->position;
         $user->brl = $request->brl;
         $user->section_id = $request->section;
+
+        if ($request->password != null) {
+          $user->password = bcrypt($request->password);
+        }
+
         $user->save();
         return back()->with('success', 'Data '. $request->name .' berhasil diperbaharui!');
       }else{

@@ -84,20 +84,19 @@
           </tr>
         </thead>
         <tbody>
-          @php $no =1; @endphp
+          @php $no = 1; @endphp
           @forelse($tops as $top)
             <tr>
-              <th scope="row">{{ $no }}</th>
+              <th scope="row">{{ $no++ }}</th>
               <td>{{ $top->user->name }}</td>
               <td>{{ $top->user->section->name }}</td>
               <td>{{ $top->gc }}</td>
             </tr>
-            @php $no++; @endphp
           @empty
 
           @endforelse
         </tbody>
-  </table>
+      </table>
     </div>
   </div>
 

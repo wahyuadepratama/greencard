@@ -97,32 +97,25 @@
 var chart = Highcharts.chart('chartPencapaian', {
     chart: {
         type: 'bar',
-        scrollablePlotArea: {
-            minWidth:600 ,
-            scrollPositionX: 1
-        }
+        // scrollablePlotArea: {
+        //     minWidth:300 ,
+        //     scrollPositionX: 0
+        // }
     },
     responsive:{
-            // rules:[{
-            //     chartOptions:undefined
-            //     condition:{
-            //           callback:undefined
-            //           maxHeight:undefined
-            //           maxWidth:100
-            //           minHeight:0
-            //           minWidth:70
-            //     }
-            // }]
     },
     title: {
-        text: 'Historic World Population by Region',
+        text: 'Grafik Pencapaian Section',
         align:'left'
     },
     subtitle: {
-        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+        text: 'Source: <a href="https://greencardbuma.com">Greencard Buma</a>'
     },
     xAxis: {
-        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+        categories: [@php foreach ($reports as $report) {
+          $x = \App\Models\Section::where('id', $report->section_id)->first();
+          echo '"'. $x->name . '",';
+        } @endphp],
         title: {
             text: null
         }
@@ -130,7 +123,7 @@ var chart = Highcharts.chart('chartPencapaian', {
     yAxis: {
         min: 0,
         title: {
-            text: 'Population (millions)',
+            text: 'Greencard Man Power / Section',
             align: 'high'
         },
         labels: {
@@ -138,7 +131,7 @@ var chart = Highcharts.chart('chartPencapaian', {
         }
     },
     tooltip: {
-        valueSuffix: ' millions'
+        valueSuffix: ' greencard'
     },
     plotOptions: {
         bar: {
@@ -154,17 +147,10 @@ var chart = Highcharts.chart('chartPencapaian', {
         enabled: false
     },
     series: [{
-        name: 'Year 1800',
-        data: [107, 31, 635, 203, 2]
-    }, {
-        name: 'Year 1900',
-        data: [133, 156, 947, 408, 6]
-    }, {
-        name: 'Year 2000',
-        data: [814, 841, 3714, 727, 31]
-    }, {
-        name: 'Year 2016',
-        data: [1216, 1001, 4436, 738, 40]
+        name: 'Greencard',
+        data: [@php foreach ($reports as $report) {
+              echo $report->section_count . ',';
+            } @endphp]
     }]
 });
 
@@ -172,31 +158,21 @@ var chartKta = Highcharts.chart('chartKta', {
     chart: {
         type: 'pie',
         scrollablePlotArea: {
-            minWidth:600 ,
-            scrollPositionX: 1
+            minWidth:300 ,
+            scrollPositionX: 0
         }
     },
     responsive:{
-            // rules:[{
-            //     chartOptions:undefined
-            //     condition:{
-            //           callback:undefined
-            //           maxHeight:undefined
-            //           maxWidth:100
-            //           minHeight:0
-            //           minWidth:70
-            //     }
-            // }]
     },
     title: {
-        text: 'Historic World Population by Region',
+        text: 'KTA - TTA',
         align:'left'
     },
     subtitle: {
-        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+        text: 'Source: <a href="https://greencardbuma.com">Greencard Buma</a>'
     },
     xAxis: {
-        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+        categories: ['Kondisi Tidak Aman', 'Tindakan Tidak Aman'],
         title: {
             text: null
         }
@@ -204,7 +180,7 @@ var chartKta = Highcharts.chart('chartKta', {
     yAxis: {
         min: 0,
         title: {
-            text: 'Population (millions)',
+            text: ' greencard',
             align: 'high'
         },
         labels: {
@@ -212,7 +188,7 @@ var chartKta = Highcharts.chart('chartKta', {
         }
     },
     tooltip: {
-        valueSuffix: ' millions'
+        valueSuffix: ' greencard'
     },
     plotOptions: {
         bar: {
@@ -228,166 +204,97 @@ var chartKta = Highcharts.chart('chartKta', {
         enabled: false
     },
     series: [{
-        name: 'Year 1800',
-        data: [107, 31, 635, 203, 2]
-    }, {
-        name: 'Year 1900',
-        data: [133, 156, 947, 408, 6]
-    }, {
-        name: 'Year 2000',
-        data: [814, 841, 3714, 727, 31]
-    }, {
-        name: 'Year 2016',
-        data: [1216, 1001, 4436, 738, 40]
+        minPointSize: 10,
+        innerSize: '20%',
+        zMin: 0,
+        name: 'KTA - TTA',
+        data: [{
+            name: 'Kondisi Tidak Aman',
+            y: <?= $kta ?>
+        }, {
+            name: 'Tindakan Tidak Aman',
+            y: <?= $tta ?>
+        }]
     }]
 });
 
 var chartLokasi = Highcharts.chart('chartLokasi', {
-    chart: {
-        type: 'bar',
-        scrollablePlotArea: {
-            minWidth:600 ,
-            scrollPositionX: 1
-        }
-    },
-    responsive:{
-            // rules:[{
-            //     chartOptions:undefined
-            //     condition:{
-            //           callback:undefined
-            //           maxHeight:undefined
-            //           maxWidth:100
-            //           minHeight:0
-            //           minWidth:70
-            //     }
-            // }]
-    },
-    title: {
-        text: 'Historic World Population by Region',
-        align:'left'
-    },
-    subtitle: {
-        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
-    },
-    xAxis: {
-        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
-        title: {
-            text: null
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Population (millions)',
-            align: 'high'
-        },
-        labels: {
-            overflow: 'justify'
-        }
-    },
-    tooltip: {
-        valueSuffix: ' millions'
-    },
-    plotOptions: {
-        bar: {
-            dataLabels: {
-                enabled: true
-            }
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    credits: {
-        enabled: false
-    },
-    series: [{
-        name: 'Year 1800',
-        data: [107, 31, 635, 203, 2]
-    }, {
-        name: 'Year 1900',
-        data: [133, 156, 947, 408, 6]
-    }, {
-        name: 'Year 2000',
-        data: [814, 841, 3714, 727, 31]
-    }, {
-        name: 'Year 2016',
-        data: [1216, 1001, 4436, 738, 40]
-    }]
+  chart: {
+     renderTo: 'container',
+     type: 'column',
+     // scrollablePlotArea: {
+     //     minWidth:300 ,
+     //     scrollPositionX: 0
+     // },
+     options3d: {
+         enabled: true,
+         alpha: 15,
+         beta: 15,
+         depth: 50,
+         viewDistance: 25
+     }
+ },
+ title: {
+     text: 'Grafik Lokasi'
+ },
+ xAxis: {
+     categories: ['Office', 'Warehouse', 'Workshop', 'Area Tambang (OB)', 'Area Tambang (Coal)', 'Area Mess', 'Pit Stop / Shutdown', 'Area Lainnya'],
+     title: {
+         text: null
+     }
+ },
+ plotOptions: {
+     column: {
+         depth: 25
+     }
+ },
+ options3d: {
+        enabled: true,
+        alpha: 0,
+        beta: 30,
+        depth: 50
+   },
+ series: [{
+     name: ['Greencard'],
+     data: [{{ $gk->office }}, {{ $gk->warehouse }}, {{ $gk->workshop }}, {{ $gk->tambang_ob }}, {{ $gk->tambang_coal }}, {{ $gk->mess }}, {{ $gk->pit_stop }}, {{ $gk->area_lainnya }}]
+ }]
 });
 
 var chartStatus = Highcharts.chart('chartStatus', {
-    chart: {
-        type: 'pie',
-        scrollablePlotArea: {
-            minWidth:600 ,
-            scrollPositionX: 1
-        }
-    },
-    responsive:{
-            // rules:[{
-            //     chartOptions:undefined
-            //     condition:{
-            //           callback:undefined
-            //           maxHeight:undefined
-            //           maxWidth:100
-            //           minHeight:0
-            //           minWidth:70
-            //     }
-            // }]
-    },
-    title: {
-        text: 'Historic World Population by Region',
-        align:'left'
-    },
-    subtitle: {
-        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
-    },
-    xAxis: {
-        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
-        title: {
-            text: null
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Population (millions)',
-            align: 'high'
-        },
-        labels: {
-            overflow: 'justify'
-        }
-    },
-    tooltip: {
-        valueSuffix: ' millions'
-    },
-    plotOptions: {
-        bar: {
-            dataLabels: {
-                enabled: true
-            }
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    credits: {
-        enabled: false
-    },
-    series: [{
-        name: 'Year 1800',
-        data: [107, 31, 635, 203, 2]
-    }, {
-        name: 'Year 1900',
-        data: [133, 156, 947, 408, 6]
-    }, {
-        name: 'Year 2000',
-        data: [814, 841, 3714, 727, 31]
-    }, {
-        name: 'Year 2016',
-        data: [1216, 1001, 4436, 738, 40]
-    }]
+  chart: {
+      type: 'pie',
+      scrollablePlotArea: {
+          minWidth:300 ,
+          scrollPositionX: 0
+      },
+      options3d: {
+          enabled: true,
+          alpha: 45,
+          beta: 0
+      }
+  },
+  title: {
+      text: 'Grafik Status Temuan'
+  },
+  plotOptions: {
+      pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          depth: 35,
+          dataLabels: {
+              enabled: true,
+              format: '{point.name}'
+          }
+      }
+  },
+  series: [{
+      type: 'pie',
+      name: 'Status',
+      data: [
+          ['Open', {{ $open }}],
+          ['Close', {{ $close }}]
+      ]
+  }]
 });
 
 $('#small').click(function () {

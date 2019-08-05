@@ -27,7 +27,7 @@ class ReportExport implements FromCollection, WithHeadings
                 ->select('users.name', 'users.position','users.brl', 'sections.name as section', 'reports.*')
                 ->get();
         return $data;
-    }elseif ($this->year == 'all') {
+      }elseif ($this->year == 'all') {
         $data = DB::table('reports')
                 ->join('users', 'reports.nik', '=', 'users.nik')
                 ->join('sections', 'users.section_id', '=', 'sections.id')

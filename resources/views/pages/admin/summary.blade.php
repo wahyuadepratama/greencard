@@ -35,9 +35,9 @@
         </select>
       </div>
     </div>
-  </div><br>
+  </div><br><br>
 
-  <div class="border p-4 mt-4" style="background:white">
+  <div class="border p-4 mt-4" style="">
       <center><p>Download data pelaporan all section <b id="titleSummary"> </b></p></center>
       <div class="row">
         <div class="col-sm-3"></div>
@@ -65,7 +65,8 @@
       var month = document.getElementById('month').value;
       $('#titleSummary').html('bulan: '+ month + ' & tahun: '+ year);
       $('#excel').attr('href', "{{ url('/admin/summary/report/export/excel/') }}"+ "/" + year + "/" + month);
-      console.log($('#excel').attr('href'));
+      $('#pdf').attr('href', "{{ url('/admin/summary/report/export/pdf/') }}"+ "/" + year + "/" + month);
+      // console.log($('#excel').attr('href'));
     }
   </script>
 @endsection

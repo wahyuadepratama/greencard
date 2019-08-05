@@ -58,7 +58,11 @@ body {
   font-size: 0.9em;
 }
 .img-logo-sidebar{
-  max-width: 200px;
+  max-width: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-self: center !important;
+  float:none;
 }
 #user-name-two, #box-user-name{
   display: none;

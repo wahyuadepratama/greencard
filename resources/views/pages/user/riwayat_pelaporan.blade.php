@@ -132,7 +132,7 @@
         });
 
       $.ajax({ /* THEN THE AJAX CALL */
-        url: "/riwayat/open/data/search",
+        url: "/user/riwayat/open/data/search",
         method : "POST",
         data:{'section':sectionChoose, 'year': sectionYear, _token: '{{csrf_token()}}'},
         async : true,
@@ -146,7 +146,7 @@
       });
 
       $.ajax({ /* THEN THE AJAX CALL */
-        url: "/riwayat/close/data/search",
+        url: "/user/riwayat/close/data/search",
         method : "POST",
         data:{'section':sectionChoose, 'year': sectionYear, _token: '{{csrf_token()}}'},
         async : true,
@@ -160,7 +160,7 @@
       });
 
       $.ajax({ /* THEN THE AJAX CALL */
-        url: "/riwayat/open/data/mobile/search",
+        url: "/user/riwayat/open/data/mobile/search",
         method : "POST",
         data:{'section':sectionChoose, 'year': sectionYear, _token: '{{csrf_token()}}'},
         async : true,
@@ -171,7 +171,7 @@
       });
 
       $.ajax({ /* THEN THE AJAX CALL */
-        url: "/riwayat/close/data/mobile/search",
+        url: "/user/riwayat/close/data/mobile/search",
         method : "POST",
         data:{'section':sectionChoose, 'year': sectionYear, _token: '{{csrf_token()}}'},
         async : true,
@@ -184,13 +184,13 @@
 
     function loadModal(id) {
       $.ajax({ /* THEN THE AJAX CALL */
-          url: "/section/modal",
+          url: "/user/section/modal",
           method : "POST",
           data:{'id':id, _token: '{{csrf_token()}}'},
           async : true,
           success: function(data){
             $('#modalStatus').html(data[0]['status']);
-            if (data[0]['status'] == 'Close') {              
+            if (data[0]['status'] == 'Close') {
               $('#modalStatus').attr('class', 'text-danger');
             }else{
               $('#modalStatus').attr('class', 'text-success');
