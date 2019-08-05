@@ -38,7 +38,7 @@
             </tr>
             <tr id="viewPass" style="display:none">
               <td>  <label for="">Password</label></td>
-              <td><input id="updatePass" placeholder="********" type="text" name="password" class="form-control"></td>
+              <td><input id="updatePass" placeholder="********" type="password" name="password" class="form-control"></td>
             </tr>
             <tr>
               <td><label for=""> Section</label></td>

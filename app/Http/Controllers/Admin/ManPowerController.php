@@ -154,8 +154,10 @@ class ManPowerController extends Controller
           'section' => 'required',
       ]);
 
-      if ($request->nik == session('login')->nik) {
-        return back()->with('success', 'Pengecekan berhasil! Namun anda tidak bisa mengubah role untuk diri sendiri karena anda sedang login!');
+      if (session('login')->role_id == 1) {
+        if ($request->role != session('login')->role_id) {
+          return back()->with('success', 'Pengecekan berhasil! Namun anda tidak bisa mengubah role untuk diri sendiri karena anda sedang login sebagai administrator!');
+        }
       }
 
       $user = User::where('nik', $request->nik)->first();
