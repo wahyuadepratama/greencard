@@ -22,6 +22,8 @@
 			<tr>
 				<th>ID</th>
 				<th>NIK</th>
+				<th>Section</th>
+				<th>BRL/Level</th>
 				<th>Tanggal</th>
 				<th>Lokasi</th>
 				<th>Detail Lokasi</th>
@@ -38,6 +40,8 @@
 			<tr>
 				<td>{{ $p->id }}</td>
 				<td>{{$p->nik}}</td>
+				<td>{{$p->section}}</td>
+				<td>{{ $p->brl }}</td>
 				<td>{{$p->date}}</td>
 				<td>{{$p->location}}</td>
 				<td>{{$p->detail_location}}</td>

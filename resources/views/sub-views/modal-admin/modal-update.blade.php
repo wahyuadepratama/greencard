@@ -25,7 +25,7 @@
               <td><label for=""> Nama</label></td>
               <td><input id="updateName" type="text" name="name" class="form-control"></td>
             </tr>
-            <tr>              
+            <tr>
               <td><input id="updateNik" type="hidden" name="nik" class="form-control"></td>
             </tr>
             <tr>
@@ -35,6 +35,10 @@
             <tr>
               <td>  <label for="">BRL/Level</label></td>
               <td><input id="updateBrl" type="text" name="brl" class="form-control"></td>
+            </tr>
+            <tr id="viewPass" style="display:none">
+              <td>  <label for="">Password</label></td>
+              <td><input id="updatePass" placeholder="********" type="text" name="password" class="form-control"></td>
             </tr>
             <tr>
               <td><label for=""> Section</label></td>

@@ -85,7 +85,7 @@
             </table>
             <br>
           </div>
-          @empty          
+          @empty
           @endforelse
     </div>
   </div>
