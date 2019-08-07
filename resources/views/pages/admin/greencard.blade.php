@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="container " id="history-report">
+
   <div class="clearfix">
     <div class="section-year form-inline">
       <div class="section form-group">
@@ -26,6 +27,11 @@
     </div>
   </div>
   <br>
+  @if (session('success'))
+    <br><br><small>
+      <div class="alert alert-success"> {{ session('success') }} </div>
+    </small>
+  @endif
   <ul class="nav nav-tabs" id="tabs-history">
     <li class="nav-item">
       <a class="nav-link active" href="#" onclick="openCity(event,'open-status')">Open</a>
@@ -201,6 +207,7 @@
             }else{
               $('#modalStatus').attr('class', 'text-success');
             }
+            $('#modalDestroy').attr('href', '/greencard/report/destroy'+'/'+data[0]['id']);
             $('#modalId').html(data[0]['id']);
             $('#modalPelapor').html(data[0]['name']);
             $('#modalSection').html(data[0]['section']);

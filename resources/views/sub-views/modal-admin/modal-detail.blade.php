@@ -79,6 +79,9 @@
         </div>
       </div>
       <div class="modal-footer">
+        @if(request()->is('admin/greencard'))
+        <a href="#" class="btn btn-danger" id="modalDestroy" >Delete Report</a>
+        @endif
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

@@ -12,20 +12,18 @@ class HistoryReportController extends Controller
 {
   public function index()
   {
-    $sections = Section::all();
-    $open = Report::where('status', 'Open')->orderBy('date', 'desc')->join('users', function ($join) {
-                        $join->on('reports.nik', '=', 'users.nik')->where('users.section_id', '=', 1);
+    $open = Report::where('status', 'Open')->where('reports.nik', session('login')->nik)->orderBy('date', 'desc')->join('users', function ($join) {
+                        $join->on('reports.nik', '=', 'users.nik');
                     })->get();
-    $close = Report::where('status', 'Close')->orderBy('date', 'desc')->join('users', function ($join) {
-                        $join->on('reports.nik', '=', 'users.nik')->where('users.section_id', '=', 1);
+    $close = Report::where('status', 'Close')->where('reports.nik', session('login')->nik)->orderBy('date', 'desc')->join('users', function ($join) {
+                        $join->on('reports.nik', '=', 'users.nik');
                     })->get();
 
     $this->convertDateToHumans($open);
     $this->convertDateToHumans($close);
 
     return view('pages.admin.riwayat_pelaporan')->with('open', $open)
-                                              ->with('close', $close)
-                                              ->with('sections', $sections);
+                                              ->with('close', $close);
   }
 
   public function searchOpenHistory(Request $request)

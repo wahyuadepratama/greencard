@@ -5,14 +5,11 @@
 @section('content')
 
 <div class="container " id="history-report">
-  <div class="clearfix">
+  <!-- <div class="clearfix">
     <div class="section-year form-inline">
       <div class="section form-group">
         <label for="">Section &nbsp;</label>
         <select class="form-control" id="sectionOptionOpen" onchange="searchSectionData()">
-          @foreach($sections as $section)
-            <option value="{{ $section->id }}">{{ $section->name }}</option>
-          @endforeach
         </select>
       </div>
       <div class="year" style="margin-left:10px;">
@@ -24,7 +21,7 @@
         </select>
       </div>
     </div>
-  </div>
+  </div> -->
   <br>
   <ul class="nav nav-tabs" id="tabs-history">
     <li class="nav-item">
