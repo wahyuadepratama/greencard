@@ -17,7 +17,7 @@
   margin: 0px;
 }
 .container.login{
-  background: #34205f ;
+  background: #18161bb3;
   max-width: 350px;
   padding: 20px;
   align-self: center;
@@ -91,10 +91,10 @@ body {
   background-color: white !important;
 }
 .navbar-light.bg-light{
-  background-color: #ff87cb !important;
+  background-color: #34a062 !important;
 }
 #sidebar-wrapper,.list-group-item.bg-light{
-  background-color: #34205f !important;
+  background-color: #18161b !important;
   color: white;
 }
 
@@ -225,11 +225,11 @@ button[data-toggle="collapse"].btn-link:active{
   text-decoration: none;
 }
 .btn-primary{
-  background-color: #34205f !important;
+  background-color: #4bb879 !important;
   border: 0px;
 }
 button.btn-primary:hover{
-background-color: #11ab51;
+background-color: #34a062;
 }
 .table-mobileview{
   font-size: 0.9em;
@@ -346,7 +346,7 @@ padding: 0px;
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #34205f;
+  background: #18161b;
 }
 
 /* Handle on hover */

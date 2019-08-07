@@ -197,6 +197,12 @@ class GreencardController extends Controller
     $report->save();
   }
 
+  public function destroyReport($id)
+  {
+    Report::destroy($id);
+    return back()->with('success', 'Laporan dengan nomor '. $id .' berhasil dihapus!');
+  }
+
   public function convertDateToHumans($jsons){
     foreach ($jsons as $json)
       $json->date = date('d F Y', strtotime($json->date));
