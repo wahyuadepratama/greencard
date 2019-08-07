@@ -71,6 +71,10 @@
                    <td id="modalTindakanPerbaikan">Lorem ipsum dolor</td>
                  </tr>
                  <tr>
+                   <td>PIC Section</td>
+                   <td id="modalPic">Lorem ipsum dolor</td>
+                 </tr>
+                 <tr>
                    <td>Status</td>
                    <td id="modalStatus">Lorem ipsum dolor</td>
                  </tr>

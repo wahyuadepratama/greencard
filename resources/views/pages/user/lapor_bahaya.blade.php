@@ -91,14 +91,14 @@
                   </div>
               </div>
           </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="report-form-container">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Deskripsi Bahaya</label>
             <textarea class="form-control" required name="description" id="exampleFormControlTextarea1" rows="2" placeholder="Contoh: Ditemukan tinggi tanggul yang kurang dari 3/4 tinggi tyre HD">{{ old('description') }}</textarea>
           </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="report-form-container">
           <div class="form-group">
             <label for="exampleFormControlSelect2">Resiko</label>
             <textarea class="form-control" required name="risk" id="exampleFormControlTextarea1" rows="2" placeholder="Contoh: Unit terjatuh karena tidak ada pengamanan">{{ old('risk') }}</textarea>
@@ -106,6 +106,14 @@
           <div class="form-group">
             <label for="exampleFormControlSelect2">Tindakan Perbaikan</label>
             <textarea class="form-control" required name="action" id="exampleFormControlTextarea1" rows="2" placeholder="Contoh: Melakukan peninggian tanggul 3/4 dari tinggi tyre HD sesuai dengan standar">{{ old('action') }}</textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">PIC Section</label>
+            <select class="form-control" name="pic" id="exampleFormControlSelect2">
+              @foreach($sections as $s)
+                <option value="{{ $s->id }}">{{ $s->name }}</option>
+              @endforeach
+            </select>
           </div>
           <div class="form-group">
             <label for="exampleFormControlSelect2">Status</label>
