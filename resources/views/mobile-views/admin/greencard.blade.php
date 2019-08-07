@@ -33,7 +33,7 @@
           <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail" onclick="loadModal({{ $mopen->id }})">
             Detail
           </button>&nbsp;
-          <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#status"  onclick="changeStatus({{ $mopen->id }},'{{ $mopen->status }}')">
+          <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#status"  onclick="changeStatus({{ $mopen->id }},'{{ $mopen->status }}')">
             {{ $mopen->status }}
           </button>
         </div>

@@ -23,8 +23,7 @@ class HistoryController extends Controller
     $this->convertDateToHumans($close);
 
     return view('pages.verifikator.riwayat_pelaporan')->with('open', $open)
-                                              ->with('close', $close)
-                                              ->with('sections', $sections);
+                                              ->with('close', $close);
   }
 
   public function searchOpenHistory(Request $request)
@@ -168,8 +167,9 @@ class HistoryController extends Controller
     $report = DB::table('reports')
             ->join('users', 'reports.nik', '=', 'users.nik')
             ->join('sections', 'users.section_id', '=', 'sections.id')
+            ->join('pics', 'reports.pic', '=', 'pics.id')
             ->where('reports.id', $request->id)
-            ->select('reports.*', 'users.brl', 'sections.name', 'users.name', 'sections.name as section')
+            ->select('reports.*', 'pics.name as pics', 'users.brl', 'sections.name', 'users.name', 'sections.name as section')
             ->get();
     $this->convertDateToHumans($report);
     return $report;

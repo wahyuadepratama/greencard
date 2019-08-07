@@ -108,6 +108,14 @@
             <textarea class="form-control" required name="action" id="exampleFormControlTextarea1" rows="2" placeholder="Contoh: Melakukan peninggian tanggul 3/4 dari tinggi tyre HD sesuai dengan standar">{{ old('action') }}</textarea>
           </div>
           <div class="form-group">
+            <label for="exampleFormControlSelect2">PIC Section</label>
+            <select class="form-control" name="pic" id="exampleFormControlSelect2">
+              @foreach($sections as $s)
+                <option value="{{ $s->id }}">{{ $s->name }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
             <label for="exampleFormControlSelect2">Status</label>
             <select class="form-control" name="status" id="exampleFormControlSelect2">
               <option value="Open">Open</option>

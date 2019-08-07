@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Verifikator;
 
+use App\Models\Report;
+use App\Models\Pic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class DangerReportController extends Controller
 {
     public function index(){
-      return view('pages.verifikator.lapor_bahaya');
+      $pic = Pic::all();
+      return view('pages.verifikator.lapor_bahaya')->with('sections', $pic);
     }
 
     public function store(Request $request)
@@ -23,6 +26,7 @@ class DangerReportController extends Controller
           'description' => 'required',
           'risk' => 'required',
           'action' => 'required',
+          'pic' => 'required',
           'status' => 'required',
       ]);
 
@@ -37,6 +41,7 @@ class DangerReportController extends Controller
         'description' => $request->description,
         'risk' => $request->risk,
         'action' => $request->action,
+        'pic' => $request->pic,
         'status' => $request->status
       ]);
       return back()->with('success', 'Terima kasih! Laporan berhasil ditambahkan.');

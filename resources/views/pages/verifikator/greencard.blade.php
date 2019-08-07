@@ -8,7 +8,7 @@
   <div class="clearfix">
     <div class="section-year form-inline">
       <div class="section form-group">
-        <label for="">Section &nbsp;</label>
+        <label for="">PIC Section &nbsp;</label>
         <select class="form-control" id="sectionOptionOpen" onchange="searchSectionData()">
           @foreach($sections as $section)
             <option value="{{ $section->id }}">{{ $section->name }}</option>
@@ -63,7 +63,7 @@
               </button>
             </td>
             <td>
-              @if($mOpen->user->section_id == session('login')->section_id)
+              @if($mOpen->pic == session('login')->section_id)
               <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#status" onclick="changeStatus({{ $mOpen->id }},'{{ $mOpen->status }}')">
                 {{ $mOpen->status }}
               </button>
@@ -222,6 +222,7 @@
             $('#modalRisiko').html(data[0]['risk']);
             $('#modalKodeBahaya').html(data[0]['danger_code']);
             $('#modalTindakanPerbaikan').html(data[0]['action']);
+            $('#modalPic').html(data[0]['pics']);
           }
         });//end ajax
       } //end function

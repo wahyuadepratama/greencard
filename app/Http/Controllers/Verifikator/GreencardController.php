@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Verifikator;
 
+use App\Models\Pic;
 use App\Models\Section;
 use App\Models\Report;
 use Illuminate\Http\Request;
@@ -12,12 +13,12 @@ class GreencardController extends Controller
 {
   public function index()
   {
-    $sections = Section::all();
-    $open = Report::where('status', 'Open')->orderBy('date', 'desc')->join('users', function ($join) {
-                        $join->on('reports.nik', '=', 'users.nik')->where('users.section_id', '=', 1);
+    $sections = Pic::all();
+    $open = Report::where('status', 'Open')->where('pic', 1)->orderBy('date', 'desc')->join('users', function ($join) {
+                        $join->on('reports.nik', '=', 'users.nik');
                     })->get();
-    $close = Report::where('status', 'Close')->orderBy('date', 'desc')->join('users', function ($join) {
-                        $join->on('reports.nik', '=', 'users.nik')->where('users.section_id', '=', 1);
+    $close = Report::where('status', 'Close')->where('pic', 1)->orderBy('date', 'desc')->join('users', function ($join) {
+                        $join->on('reports.nik', '=', 'users.nik');
                     })->get();
 
     $this->convertDateToHumans($open);
@@ -32,11 +33,11 @@ class GreencardController extends Controller
   {
     $report = DB::table('reports')
             ->join('users', 'reports.nik', '=', 'users.nik')
-            ->join('sections', 'users.section_id', '=', 'sections.id')
-            ->where('sections.id', $request->section)
+            ->join('pics', 'reports.pic', '=', 'pics.id')
+            ->where('reports.pic', $request->section)
             ->where('reports.status', 'Open')
             ->whereYear('reports.date', '=', $request->year)
-            ->select('reports.*', 'users.brl', 'users.section_id', 'sections.name as section')
+            ->select('reports.*', 'users.brl', 'users.section_id', 'pics.name as section')
             ->get();
 
     $this->convertDateToHumans($report);
@@ -52,7 +53,7 @@ class GreencardController extends Controller
           </button>
         </td>
         <td>';
-        if($key->section_id == session('login')->section_id){
+        if($key->pic == session('login')->section_id || session('login')->section_id == 15){
           echo '<button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#status" onclick="changeStatus('. $key->id .', \''. $key->status.'\')">
                   '. $key->status .'
                 </button>
@@ -70,11 +71,11 @@ class GreencardController extends Controller
   {
     $report = DB::table('reports')
             ->join('users', 'reports.nik', '=', 'users.nik')
-            ->join('sections', 'users.section_id', '=', 'sections.id')
-            ->where('sections.id', $request->section)
+            ->join('pics', 'reports.pic', '=', 'pics.id')
+            ->where('reports.pic', $request->section)
             ->where('reports.status', 'Close')
             ->whereYear('reports.date', '=', $request->year)
-            ->select('reports.*', 'users.brl', 'users.section_id', 'sections.name as section')
+            ->select('reports.*', 'users.brl', 'users.section_id', 'pics.name as section')
             ->get();
 
     $this->convertDateToHumans($report);
@@ -90,7 +91,7 @@ class GreencardController extends Controller
           </button>
         </td>
         <td>';
-        if($key->section_id == session('login')->section_id){
+        if($key->pic == session('login')->section_id || session('login')->section_id == 15){
           echo '<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#status" onclick="changeStatus('. $key->id .', \''. $key->status.'\')">
                   '. $key->status .'
                 </button>
@@ -108,11 +109,11 @@ class GreencardController extends Controller
   {
     $report = DB::table('reports')
             ->join('users', 'reports.nik', '=', 'users.nik')
-            ->join('sections', 'users.section_id', '=', 'sections.id')
-            ->where('sections.id', $request->section)
+            ->join('pics', 'reports.pic', '=', 'pics.id')
+            ->where('reports.pic', $request->section)
             ->where('reports.status', 'Open')
             ->whereYear('reports.date', '=', $request->year)
-            ->select('reports.*', 'users.brl', 'users.section_id', 'sections.name as section')
+            ->select('reports.*', 'users.brl', 'users.section_id', 'pics.name as section')
             ->get();
 
     $this->convertDateToHumans($report);
@@ -137,7 +138,7 @@ class GreencardController extends Controller
           <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail" onclick="loadModal('. $key->id .')">
             Detail
           </button>&nbsp;';
-          if($key->section_id == session('login')->section_id){
+          if($key->pic == session('login')->section_id || session('login')->section_id == 15){
             echo '<button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#status" onclick="changeStatus('. $key->id .', \''. $key->status.'\')">
                     '. $key->status .'
                   </button>
@@ -155,11 +156,11 @@ class GreencardController extends Controller
   {
     $report = DB::table('reports')
             ->join('users', 'reports.nik', '=', 'users.nik')
-            ->join('sections', 'users.section_id', '=', 'sections.id')
-            ->where('sections.id', $request->section)
+            ->join('pics', 'reports.pic', '=', 'pics.id')
+            ->where('reports.pic', $request->section)
             ->where('reports.status', 'Close')
             ->whereYear('reports.date', '=', $request->year)
-            ->select('reports.*', 'users.brl', 'users.section_id', 'sections.name as section')
+            ->select('reports.*', 'users.brl', 'users.section_id', 'pics.name as section')
             ->get();
 
     $this->convertDateToHumans($report);
@@ -184,7 +185,7 @@ class GreencardController extends Controller
           <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#detail" onclick="loadModal('. $key->id .')">
             Detail
           </button>&nbsp;';
-          if($key->section_id == session('login')->section_id){
+          if($key->pic == session('login')->section_id || session('login')->section_id == 15){
             echo '<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#status" onclick="changeStatus('. $key->id .', \''. $key->status.'\')">
                     '. $key->status .'
                   </button>
@@ -203,8 +204,9 @@ class GreencardController extends Controller
     $report = DB::table('reports')
             ->join('users', 'reports.nik', '=', 'users.nik')
             ->join('sections', 'users.section_id', '=', 'sections.id')
+            ->join('pics', 'reports.pic', '=', 'pics.id')
             ->where('reports.id', $request->id)
-            ->select('reports.*', 'users.brl', 'sections.name', 'users.name', 'sections.name as section')
+            ->select('reports.*', 'pics.name as pics', 'users.brl', 'sections.name', 'users.name', 'sections.name as section')
             ->get();
     $this->convertDateToHumans($report);
     return $report;

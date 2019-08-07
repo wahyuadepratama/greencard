@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Section extends Model
+class Pic extends Model
 {
   public $timestamps = false;
   protected $fillable = [
       'id','name',
   ];
 
-  public function user(){
-    return $this->hasMany('App\Models\User');
-  }  
+  public function report(){
+    return $this->hasMany('App\Models\Report');
+  }
 }

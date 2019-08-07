@@ -221,6 +221,7 @@
             $('#modalRisiko').html(data[0]['risk']);
             $('#modalKodeBahaya').html(data[0]['danger_code']);
             $('#modalTindakanPerbaikan').html(data[0]['action']);
+            $('#modalPic').html(data[0]['pics']);
           }
         });//end ajax
       } //end function
