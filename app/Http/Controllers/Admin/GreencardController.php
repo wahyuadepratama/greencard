@@ -199,10 +199,22 @@ class GreencardController extends Controller
     $report->save();
   }
 
+  public function updateReport(Request $request, $id)
+  {
+    $section = Section::where('name', $request->pic)->first();
+
+    $data = Report::find($id);
+    $data->pic = $section->id;
+    $data->danger_category = $request->danger_category;
+    $data->danger_code = $request->danger_code;
+    $data->save();
+    return back()->with('success', 'Laporan dengan nomor #'. $id .' berhasil diupdate!');
+  }
+
   public function destroyReport($id)
   {
     Report::destroy($id);
-    return back()->with('success', 'Laporan dengan nomor '. $id .' berhasil dihapus!');
+    return back()->with('success', 'Laporan dengan nomor #'. $id .' berhasil dihapus!');
   }
 
   public function convertDateToHumans($jsons){

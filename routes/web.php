@@ -73,7 +73,9 @@ Route::group(['middleware' => ['auth', 'authAdmin']], function () {
   Route::post('/greencard/open/data/mobile/search', 'Admin\GreencardController@searchOpenHistoryMobile');
   Route::post('/greencard/close/data/mobile/search', 'Admin\GreencardController@searchCloseHistoryMobile');
   Route::post('/greencard/change-status', 'Admin\GreencardController@changeStatus');
+
   Route::get('/greencard/report/destroy/{id}', 'Admin\GreencardController@destroyReport');
+  Route::post('/greencard/report/update/{id}', 'Admin\GreencardController@updateReport');
 
   Route::get('/admin/man-power/', 'Admin\ManPowerController@index');
   Route::post('/admin/man-power/store', 'Admin\ManPowerController@store');

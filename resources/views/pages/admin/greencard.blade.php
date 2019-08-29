@@ -208,6 +208,7 @@
               $('#modalStatus').attr('class', 'text-success');
             }
             $('#modalDestroy').attr('href', '/greencard/report/destroy'+'/'+data[0]['id']);
+            $('#modalUpdate').attr('action', '/greencard/report/update'+'/'+data[0]['id']);
             $('#modalId').html(data[0]['id']);
             $('#modalPelapor').html(data[0]['name']);
             $('#modalSection').html(data[0]['section']);
@@ -216,12 +217,12 @@
             $('#modalWaktu').html(data[0]['time']);
             $('#modalLokasi').html(data[0]['location']);
             $('#modalDetailLokasi').html(data[0]['detail_location']);
-            $('#modalKategoriBahaya').html(data[0]['danger_category']);
+            $('#modalKategoriBahaya').val(data[0]['danger_category']);
             $('#modalDeskripsiBahaya').html(data[0]['description']);
             $('#modalRisiko').html(data[0]['risk']);
-            $('#modalKodeBahaya').html(data[0]['danger_code']);
+            $('#modalKodeBahaya').val(data[0]['danger_code']);
             $('#modalTindakanPerbaikan').html(data[0]['action']);
-            $('#modalPic').html(data[0]['pics']);
+            $('#modalPic').val(data[0]['pics']);
           }
         });//end ajax
       } //end function
