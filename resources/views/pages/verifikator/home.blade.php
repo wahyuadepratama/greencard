@@ -56,13 +56,46 @@
             </h5>
           </div>
         </div>
-      </div>  
+      </div>
 
     </div>
 <br>
     <div id="rank-wrapper" class="table-responsive">
       <table class="table">
         <thead>
+          <tr>
+            <th colspan="4">
+              <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-2">
+                  <select class="form-control" id="searchByMonth" onchange="searchByMonthYear()">
+                    <option value="all">Semua Bulan</option>
+                    <option value="1">Januari</option>
+                    <option value="2">Febuari</option>
+                    <option value="3">Maret</option>
+                    <option value="4">April</option>
+                    <option value="5">Mei</option>
+                    <option value="6">Juni</option>
+                    <option value="7">Juli</option>
+                    <option value="8">Agustus</option>
+                    <option value="9">September</option>
+                    <option value="10">Oktober</option>
+                    <option value="11">November</option>
+                    <option value="12">Desember</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <select class="form-control" id="searchByYear" onchange="searchByMonthYear()">
+                    <option value="all">Semua Tahun</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                  </select>
+                </div>
+              </div>
+            </th>
+          </tr>
           <tr>
             <th colspan="4" class="text-center">Top 10 Rank</th>
           </tr>
@@ -73,7 +106,7 @@
             <th scope="col">GC</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="topRankTable">
           @php $no = 1; @endphp
           @forelse($tops as $top)
             <tr>
@@ -89,6 +122,32 @@
       </table>
     </div>
   </div>
+
+  <script type="text/javascript">
+
+    function searchByMonthYear(){
+      var month = $('#searchByMonth').val();
+      var year = $('#searchByYear').val();
+
+      swal({
+        text: "Please waiting...",
+        buttons: false,
+        timer: 1000
+      });
+
+      $.ajax({ /* THEN THE AJAX CALL */
+        url: "/verifikator/home/rank/update",
+        method : "POST",
+        data:{'month':month, 'year': year, _token: '{{csrf_token()}}'},
+        async : true,
+        dataType : 'text',
+        success: function(data){
+          $('#topRankTable').html(data);
+        }
+      });
+    }
+
+  </script>
 
 <!-- end content home -->
 @endsection

@@ -61,9 +61,12 @@
 @section('js-ajax')
   <script type="text/javascript">
     function changeDate() {
+      var textYear = $('#year option:selected').text();
+      var textMonth = $('#month option:selected').text();
+
       var year = document.getElementById('year').value;
       var month = document.getElementById('month').value;
-      $('#titleSummary').html('bulan: '+ month + ' & tahun: '+ year);
+      $('#titleSummary').html('bulan: '+ textMonth + ' & tahun: '+ textYear);
       $('#excel').attr('href', "{{ url('/admin/summary/report/export/excel/') }}"+ "/" + year + "/" + month);
       $('#pdf').attr('href', "{{ url('/admin/summary/report/export/pdf/') }}"+ "/" + year + "/" + month);
       // console.log($('#excel').attr('href'));

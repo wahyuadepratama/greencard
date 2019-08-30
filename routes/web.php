@@ -26,6 +26,7 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/login/user/', 'Auth\LoginController@loginFormUser');
 Route::group(['middleware' => ['auth', 'authUser']], function () {
   Route::get('/user/home/', 'User\DashboardController@index');
+  Route::post('/user/home/rank/update', 'User\DashboardController@filterRank');
 
   Route::get('/user/lapor/', 'User\DangerReportController@index');
   Route::post('/user/lapor', 'User\DangerReportController@store');
@@ -50,6 +51,7 @@ Route::group(['middleware' => ['auth', 'authUser']], function () {
 Route::get('/login/admin/', 'Auth\LoginController@loginFormAdmin');
 Route::group(['middleware' => ['auth', 'authAdmin']], function () {
   Route::get('/admin/home/', 'Admin\DashboardController@index');
+  Route::post('/admin/home/rank/update', 'Admin\DashboardController@filterRank');
 
   Route::get('/admin/lapor/', 'Admin\DangerReportController@index');
   Route::post('/admin/lapor/', 'Admin\DangerReportController@store');
@@ -92,6 +94,7 @@ Route::group(['middleware' => ['auth', 'authAdmin']], function () {
 Route::get('/login/verifikator/', 'Auth\LoginController@loginFormVerifikator');
 Route::group(['middleware' => ['auth', 'authVerifikator']], function () {
   Route::get('/verifikator/home/', 'Verifikator\DashboardController@index');
+  Route::post('/verifikator/home/rank/update', 'Verifikator\DashboardController@filterRank');
 
   Route::get('/verifikator/lapor/', 'Verifikator\DangerReportController@index');
   Route::post('/verifikator/lapor/', 'Verifikator\DangerReportController@store');
