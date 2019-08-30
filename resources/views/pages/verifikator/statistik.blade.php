@@ -4,18 +4,37 @@
 
 @section('content')
 <div class="container" style="padding-top:20px;">
-  <!-- <div class="form-inline">
-    <div class="form-group">
-      <label for="">Tahun &nbsp;</label>
-      <select class="form-control " >
-        <option value="2019"> Semua</option>
-        <option value="2019"> 2019</option>
+
+  <div class="row">
+    <div class="col-md-8"></div>
+    <div class="col-md-2">
+      <select class="form-control" id="searchByMonth" onchange="searchByMonthYear()">
+        <option value="all">Semua Bulan</option>
+        <option value="1">Januari</option>
+        <option value="2">Febuari</option>
+        <option value="3">Maret</option>
+        <option value="4">April</option>
+        <option value="5">Mei</option>
+        <option value="6">Juni</option>
+        <option value="7">Juli</option>
+        <option value="8">Agustus</option>
+        <option value="9">September</option>
+        <option value="10">Oktober</option>
+        <option value="11">November</option>
+        <option value="12">Desember</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <select class="form-control" id="searchByYear" onchange="searchByMonthYear()">
+        <option value="all">Semua Tahun</option>
+        <option value="2019">2019</option>
         <option value="2020">2020</option>
         <option value="2021">2021</option>
         <option value="2022">2022</option>
       </select>
     </div>
-  </div> -->
+  </div>
+
 <!-- START COLLAPSE -->
   <div class="mt-4">
    <div class="accordion" id="accordionExample">
@@ -305,13 +324,34 @@ $('#large').click(function () {
     chart.setSize($('.card-body').width(), 400);
 });
 
-// $('#largechartLokasi').click(function () {
-//     chartLokasi.setSize($('.card-body').width()/2, 400);
-// });
-//
-// $('#smallchartLokasi').click(function () {
-//     chartLokasi.setSize($('.card-body').parent.width(), 400);
-// });
+function searchByMonthYear(){
+  var month = $('#searchByMonth').val();
+  var year = $('#searchByYear').val();
+  window.location.href = "/verifikator/statistik?month="+month+"&year="+year;
+}
 
 </script>
+
+@if($_GET)
+  @if($_GET['month'] == null)
+    <script type="text/javascript">
+      $('#searchByMonth').val("all");
+    </script>
+  @else
+    <script type="text/javascript">
+      $('#searchByMonth').val({{ $_GET['month'] }});
+    </script>
+  @endif
+
+  @if($_GET['year'] == null)
+    <script type="text/javascript">
+      $('#searchByYear').val("all");
+    </script>
+  @else
+    <script type="text/javascript">
+      $('#searchByYear').val({{ $_GET['year'] }});
+    </script>
+  @endif
+@endif
+
 @endsection

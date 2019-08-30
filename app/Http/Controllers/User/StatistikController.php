@@ -12,29 +12,139 @@ class StatistikController extends Controller
 {
   public function index()
   {
-    $gk['office'] = Report::where('location', 'Office')->get()->count();
-    $gk['warehouse'] = Report::where('location', 'Warehouse')->get()->count();
-    $gk['workshop'] = Report::where('location', 'Workshop')->get()->count();
-    $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->get()->count();
-    $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->get()->count();
-    $gk['mess'] = Report::where('location', 'Area Mess')->get()->count();
-    $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->get()->count();
-    $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->get()->count();
-    $gk = (object) $gk;
+    if($_GET){
+      $month = $_GET['month'];
+      $year = $_GET['year'];
 
-    $kta = Report::where('danger_category', 'Kondisi Tidak Aman')->get()->count();
-    $tta = Report::where('danger_category', 'Tindakan Tidak Aman')->get()->count();
+      if ($month == "all" && $year == "all") {
 
-    $open = Report::where('status', 'Open')->get()->count();
-    $close = Report::where('status', 'Close')->get()->count();
+        $gk['office'] = Report::where('location', 'Office')->get()->count();
+        $gk['warehouse'] = Report::where('location', 'Warehouse')->get()->count();
+        $gk['workshop'] = Report::where('location', 'Workshop')->get()->count();
+        $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->get()->count();
+        $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->get()->count();
+        $gk['mess'] = Report::where('location', 'Area Mess')->get()->count();
+        $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->get()->count();
+        $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->get()->count();
+        $gk = (object) $gk;
 
-    $reports = DB::table('reports')
-                   ->join('users', 'reports.nik', '=', 'users.nik')
-                   ->join('sections', 'users.section_id', '=', 'sections.id')
-                   ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
-                   ->groupBy('users.section_id')
-                   ->limit(10)
-                   ->get();
+        $kta = Report::where('danger_category', 'Kondisi Tidak Aman')->get()->count();
+        $tta = Report::where('danger_category', 'Tindakan Tidak Aman')->get()->count();
+
+        $open = Report::where('status', 'Open')->get()->count();
+        $close = Report::where('status', 'Close')->get()->count();
+
+        $reports = DB::table('reports')
+                       ->join('users', 'reports.nik', '=', 'users.nik')
+                       ->join('sections', 'users.section_id', '=', 'sections.id')
+                       ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
+                       ->groupBy('users.section_id')
+                       ->limit(10)
+                       ->get();
+
+      }elseif($month == "all"){
+        $gk['office'] = Report::where('location', 'Office')->whereYear('date', $year)->get()->count();
+        $gk['warehouse'] = Report::where('location', 'Warehouse')->whereYear('date', $year)->get()->count();
+        $gk['workshop'] = Report::where('location', 'Workshop')->whereYear('date', $year)->get()->count();
+        $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->whereYear('date', $year)->get()->count();
+        $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->whereYear('date', $year)->get()->count();
+        $gk['mess'] = Report::where('location', 'Area Mess')->whereYear('date', $year)->get()->count();
+        $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->whereYear('date', $year)->get()->count();
+        $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->whereYear('date', $year)->get()->count();
+        $gk = (object) $gk;
+
+        $kta = Report::where('danger_category', 'Kondisi Tidak Aman')->whereYear('date', $year)->get()->count();
+        $tta = Report::where('danger_category', 'Tindakan Tidak Aman')->whereYear('date', $year)->get()->count();
+
+        $open = Report::where('status', 'Open')->whereYear('date', $year)->get()->count();
+        $close = Report::where('status', 'Close')->whereYear('date', $year)->get()->count();
+
+        $reports = DB::table('reports')
+                       ->join('users', 'reports.nik', '=', 'users.nik')
+                       ->join('sections', 'users.section_id', '=', 'sections.id')
+                       ->whereYear('reports.date', $year)
+                       ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
+                       ->groupBy('users.section_id')
+                       ->limit(10)
+                       ->get();
+      }elseif($year == "all"){
+        $gk['office'] = Report::where('location', 'Office')->whereMonth('date', $month)->get()->count();
+        $gk['warehouse'] = Report::where('location', 'Warehouse')->whereMonth('date', $month)->get()->count();
+        $gk['workshop'] = Report::where('location', 'Workshop')->whereMonth('date', $month)->get()->count();
+        $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->whereMonth('date', $month)->get()->count();
+        $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->whereMonth('date', $month)->get()->count();
+        $gk['mess'] = Report::where('location', 'Area Mess')->whereMonth('date', $month)->get()->count();
+        $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->whereMonth('date', $month)->get()->count();
+        $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->whereMonth('date', $month)->get()->count();
+        $gk = (object) $gk;
+
+        $kta = Report::where('danger_category', 'Kondisi Tidak Aman')->whereMonth('date', $month)->get()->count();
+        $tta = Report::where('danger_category', 'Tindakan Tidak Aman')->whereMonth('date', $month)->get()->count();
+
+        $open = Report::where('status', 'Open')->whereMonth('date', $month)->get()->count();
+        $close = Report::where('status', 'Close')->whereMonth('date', $month)->get()->count();
+
+        $reports = DB::table('reports')
+                       ->join('users', 'reports.nik', '=', 'users.nik')
+                       ->join('sections', 'users.section_id', '=', 'sections.id')
+                       ->whereMonth('reports.date', $month)
+                       ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
+                       ->groupBy('users.section_id')
+                       ->limit(10)
+                       ->get();
+      }else{
+        $gk['office'] = Report::where('location', 'Office')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $gk['warehouse'] = Report::where('location', 'Warehouse')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $gk['workshop'] = Report::where('location', 'Workshop')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $gk['mess'] = Report::where('location', 'Area Mess')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $gk = (object) $gk;
+
+        $kta = Report::where('danger_category', 'Kondisi Tidak Aman')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $tta = Report::where('danger_category', 'Tindakan Tidak Aman')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+
+        $open = Report::where('status', 'Open')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $close = Report::where('status', 'Close')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+
+        $reports = DB::table('reports')
+                       ->join('users', 'reports.nik', '=', 'users.nik')
+                       ->join('sections', 'users.section_id', '=', 'sections.id')
+                       ->whereMonth('reports.date', $month)
+                       ->whereYear('reports.date', $year)
+                       ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
+                       ->groupBy('users.section_id')
+                       ->limit(10)
+                       ->get();
+      }
+
+    }else{
+      $gk['office'] = Report::where('location', 'Office')->get()->count();
+      $gk['warehouse'] = Report::where('location', 'Warehouse')->get()->count();
+      $gk['workshop'] = Report::where('location', 'Workshop')->get()->count();
+      $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->get()->count();
+      $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->get()->count();
+      $gk['mess'] = Report::where('location', 'Area Mess')->get()->count();
+      $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->get()->count();
+      $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->get()->count();
+      $gk = (object) $gk;
+
+      $kta = Report::where('danger_category', 'Kondisi Tidak Aman')->get()->count();
+      $tta = Report::where('danger_category', 'Tindakan Tidak Aman')->get()->count();
+
+      $open = Report::where('status', 'Open')->get()->count();
+      $close = Report::where('status', 'Close')->get()->count();
+
+      $reports = DB::table('reports')
+                     ->join('users', 'reports.nik', '=', 'users.nik')
+                     ->join('sections', 'users.section_id', '=', 'sections.id')
+                     ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
+                     ->groupBy('users.section_id')
+                     ->limit(10)
+                     ->get();
+    }
 
     return view('pages.user.statistik')->with('gk', $gk)
                                         ->with('kta', $kta)

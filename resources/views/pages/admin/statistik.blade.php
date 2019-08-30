@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-8"></div>
     <div class="col-md-2">
-      <select class="form-control" id="searchByMonth" onchange="searchByMonth()">
+      <select class="form-control" id="searchByMonth" onchange="searchByMonthYear()">
         <option value="all">Semua Bulan</option>
         <option value="1">Januari</option>
         <option value="2">Febuari</option>
@@ -25,7 +25,7 @@
       </select>
     </div>
     <div class="col-md-2">
-      <select class="form-control" id="searchByYear" onchange="searchByYear()">
+      <select class="form-control" id="searchByYear" onchange="searchByMonthYear()">
         <option value="all">Semua Tahun</option>
         <option value="2019">2019</option>
         <option value="2020">2020</option>
@@ -323,13 +323,34 @@ $('#large').click(function () {
     chart.setSize($('.card-body').width(), 400);
 });
 
-// $('#largechartLokasi').click(function () {
-//     chartLokasi.setSize($('.card-body').width()/2, 400);
-// });
-//
-// $('#smallchartLokasi').click(function () {
-//     chartLokasi.setSize($('.card-body').parent.width(), 400);
-// });
+function searchByMonthYear(){
+  var month = $('#searchByMonth').val();
+  var year = $('#searchByYear').val();
+  window.location.href = "/admin/statistik?month="+month+"&year="+year;
+}
 
 </script>
+
+@if($_GET)
+  @if($_GET['month'] == null)
+    <script type="text/javascript">
+      $('#searchByMonth').val("all");
+    </script>
+  @else
+    <script type="text/javascript">
+      $('#searchByMonth').val({{ $_GET['month'] }});
+    </script>
+  @endif
+
+  @if($_GET['year'] == null)
+    <script type="text/javascript">
+      $('#searchByYear').val("all");
+    </script>
+  @else
+    <script type="text/javascript">
+      $('#searchByYear').val({{ $_GET['year'] }});
+    </script>
+  @endif
+@endif
+
 @endsection
