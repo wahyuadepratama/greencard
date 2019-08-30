@@ -97,8 +97,20 @@
       <div id="collapseFourth" class="collapse" aria-labelledby="headingFourth" data-parent="#accordionExample">
         <div class="card-body">
           <div id="chartStatus" style="max-width: auto; height: 400px; margin: 0 auto"></div>
-
-
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingFifth">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFifth" aria-expanded="false" aria-controls="collapseThree">
+            Grafik Kode Bahaya
+          </button>
+        </h2>
+      </div>
+      <div id="collapseFifth" class="collapse" aria-labelledby="headingFifth" data-parent="#accordionExample">
+        <div class="card-body">
+          <div id="chartKode" style="max-width: auto; height: 400px; margin: 0 auto"></div>
         </div>
       </div>
     </div>
@@ -312,6 +324,45 @@ var chartStatus = Highcharts.chart('chartStatus', {
       data: [
           ['Open', {{ $open }}],
           ['Close', {{ $close }}]
+      ]
+  }]
+});
+
+var chartKode = Highcharts.chart('chartKode', {
+  chart: {
+      type: 'pie',
+      scrollablePlotArea: {
+          minWidth:300 ,
+          scrollPositionX: 0
+      },
+      options3d: {
+          enabled: true,
+          alpha: 45,
+          beta: 0
+      }
+  },
+  title: {
+      text: 'Grafik Kode Bahaya'
+  },
+  plotOptions: {
+      pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          depth: 35,
+          dataLabels: {
+              enabled: true,
+              format: '{point.name}'
+          }
+      }
+  },
+  series: [{
+      type: 'pie',
+      name: 'Kode Bahaya',
+      data: [
+          ['A', {{ $a }}],
+          ['AA', {{ $aa }}],
+          ['B', {{ $b }}],
+          ['C', {{ $c }}]
       ]
   }]
 });

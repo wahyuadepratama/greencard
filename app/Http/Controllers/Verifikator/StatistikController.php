@@ -34,6 +34,11 @@ class StatistikController extends Controller
         $open = Report::where('status', 'Open')->get()->count();
         $close = Report::where('status', 'Close')->get()->count();
 
+        $aa = Report::where('danger_code', 'AA')->get()->count();
+        $a = Report::where('danger_code', 'A')->get()->count();
+        $b = Report::where('danger_code', 'B')->get()->count();
+        $c = Report::where('danger_code', 'C')->get()->count();
+
         $reports = DB::table('reports')
                        ->join('users', 'reports.nik', '=', 'users.nik')
                        ->join('sections', 'users.section_id', '=', 'sections.id')
@@ -58,6 +63,11 @@ class StatistikController extends Controller
 
         $open = Report::where('status', 'Open')->whereYear('date', $year)->get()->count();
         $close = Report::where('status', 'Close')->whereYear('date', $year)->get()->count();
+
+        $aa = Report::where('danger_code', 'AA')->whereYear('date', $year)->get()->count();
+        $a = Report::where('danger_code', 'A')->whereYear('date', $year)->get()->count();
+        $b = Report::where('danger_code', 'B')->whereYear('date', $year)->get()->count();
+        $c = Report::where('danger_code', 'C')->whereYear('date', $year)->get()->count();
 
         $reports = DB::table('reports')
                        ->join('users', 'reports.nik', '=', 'users.nik')
@@ -84,6 +94,11 @@ class StatistikController extends Controller
         $open = Report::where('status', 'Open')->whereMonth('date', $month)->get()->count();
         $close = Report::where('status', 'Close')->whereMonth('date', $month)->get()->count();
 
+        $aa = Report::where('danger_code', 'AA')->whereMonth('date', $month)->get()->count();
+        $a = Report::where('danger_code', 'A')->whereMonth('date', $month)->get()->count();
+        $b = Report::where('danger_code', 'B')->whereMonth('date', $month)->get()->count();
+        $c = Report::where('danger_code', 'C')->whereMonth('date', $month)->get()->count();
+
         $reports = DB::table('reports')
                        ->join('users', 'reports.nik', '=', 'users.nik')
                        ->join('sections', 'users.section_id', '=', 'sections.id')
@@ -108,6 +123,11 @@ class StatistikController extends Controller
 
         $open = Report::where('status', 'Open')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
         $close = Report::where('status', 'Close')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+
+        $aa = Report::where('danger_code', 'AA')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $a = Report::where('danger_code', 'A')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $b = Report::where('danger_code', 'B')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+        $c = Report::where('danger_code', 'C')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
 
         $reports = DB::table('reports')
                        ->join('users', 'reports.nik', '=', 'users.nik')
@@ -137,6 +157,11 @@ class StatistikController extends Controller
       $open = Report::where('status', 'Open')->get()->count();
       $close = Report::where('status', 'Close')->get()->count();
 
+      $aa = Report::where('danger_code', 'AA')->get()->count();
+      $a = Report::where('danger_code', 'A')->get()->count();
+      $b = Report::where('danger_code', 'B')->get()->count();
+      $c = Report::where('danger_code', 'C')->get()->count();
+
       $reports = DB::table('reports')
                      ->join('users', 'reports.nik', '=', 'users.nik')
                      ->join('sections', 'users.section_id', '=', 'sections.id')
@@ -151,6 +176,10 @@ class StatistikController extends Controller
                                         ->with('tta', $tta)
                                         ->with('open', $open)
                                         ->with('close', $close)
+                                        ->with('aa', $aa)
+                                        ->with('a', $a)
+                                        ->with('b', $b)
+                                        ->with('c', $c)
                                         ->with('reports', $reports);
   }
 }
