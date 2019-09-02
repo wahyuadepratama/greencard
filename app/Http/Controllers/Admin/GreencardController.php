@@ -204,9 +204,17 @@ class GreencardController extends Controller
     $section = Section::where('name', $request->pic)->first();
 
     $data = Report::find($id);
-    $data->pic = $section->id;
+    $data->date = $request->date;
+    $data->time = $request->time;
+    $data->location = $request->location;
+    $data->detail_location = $request->detail_location;
     $data->danger_category = $request->danger_category;
+    $data->description = $request->description;
+    $data->risk = $request->risk;
     $data->danger_code = $request->danger_code;
+    $data->action = $request->action;
+    $data->pic = $section->id;
+
     $data->save();
     return back()->with('success', 'Laporan dengan nomor #'. $id .' berhasil diupdate!');
   }

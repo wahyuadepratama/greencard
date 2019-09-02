@@ -171,7 +171,7 @@ class HistoryReportController extends Controller
             ->where('reports.id', $request->id)
             ->select('reports.*', 'pics.name as pics', 'users.brl', 'sections.name', 'users.name', 'sections.name as section')
             ->get();
-    $this->convertDateToHumans($report);
+    // $this->convertDateToHumans($report);
     return $report;
   }
 

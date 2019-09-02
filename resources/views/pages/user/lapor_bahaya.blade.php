@@ -29,7 +29,7 @@
       <div class="col-lg-6">
         <div class="report-form-container">
           <div class="form-group">
-            <label for="exampleFormControlSelect2">Tanggal ditemukannya bahaya (bulan/hari/tahun)</label>
+            <label for="exampleFormControlSelect2">Tanggal ditemukannya bahaya (hari/bulan/tahun)</label>
             <!-- <input id="datepicker" width="276" /> -->
             <div class="form-group">
                 <div class="input-group date" id="datetimepicker" data-target-input="nearest">

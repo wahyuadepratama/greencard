@@ -132,6 +132,9 @@
 @include('sub-views.modal-admin.modal-status')
 
 @section('js-ajax')
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript">
 
     function searchSectionData(){
@@ -213,15 +216,15 @@
             $('#modalPelapor').html(data[0]['name']);
             $('#modalSection').html(data[0]['section']);
             $('#modalBrl').html(data[0]['brl']);
-            $('#modalTanggal').html(data[0]['date']);
-            $('#modalWaktu').html(data[0]['time']);
-            $('#modalLokasi').html(data[0]['location']);
-            $('#modalDetailLokasi').html(data[0]['detail_location']);
+            $('#modalTanggal').val(data[0]['date']);
+            $('#modalWaktu').val(data[0]['time']);
+            $('#modalLokasi').val(data[0]['location']);
+            $('#modalDetailLokasi').val(data[0]['detail_location']);
             $('#modalKategoriBahaya').val(data[0]['danger_category']);
-            $('#modalDeskripsiBahaya').html(data[0]['description']);
-            $('#modalRisiko').html(data[0]['risk']);
+            $('#modalDeskripsiBahaya').val(data[0]['description']);
+            $('#modalRisiko').val(data[0]['risk']);
             $('#modalKodeBahaya').val(data[0]['danger_code']);
-            $('#modalTindakanPerbaikan').html(data[0]['action']);
+            $('#modalTindakanPerbaikan').val(data[0]['action']);
             $('#modalPic').val(data[0]['pics']);
           }
         });//end ajax
@@ -255,5 +258,11 @@
         });
         searchSectionData();
       }
+
+      $( function() {
+        // $( "#modalTanggal" ).datepicker({ dateFormat: 'dd/mm/yy' }).val();
+        // $( "#modalWaktu" ).timepicker({ 'timeFormat': 'h:i:s' });
+      } );
+
   </script>
 @endsection
