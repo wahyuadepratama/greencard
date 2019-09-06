@@ -44,7 +44,6 @@ class StatistikController extends Controller
                        ->join('sections', 'users.section_id', '=', 'sections.id')
                        ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
                        ->groupBy('users.section_id')
-                       ->limit(10)
                        ->get();
 
       }elseif($month == "all"){
@@ -75,7 +74,6 @@ class StatistikController extends Controller
                        ->whereYear('reports.date', $year)
                        ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
                        ->groupBy('users.section_id')
-                       ->limit(10)
                        ->get();
       }elseif($year == "all"){
         $gk['office'] = Report::where('location', 'Office')->whereMonth('date', $month)->get()->count();
@@ -105,7 +103,6 @@ class StatistikController extends Controller
                        ->whereMonth('reports.date', $month)
                        ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
                        ->groupBy('users.section_id')
-                       ->limit(10)
                        ->get();
       }else{
         $gk['office'] = Report::where('location', 'Office')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
@@ -136,7 +133,6 @@ class StatistikController extends Controller
                        ->whereYear('reports.date', $year)
                        ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
                        ->groupBy('users.section_id')
-                       ->limit(10)
                        ->get();
       }
 
@@ -167,7 +163,6 @@ class StatistikController extends Controller
                      ->join('sections', 'users.section_id', '=', 'sections.id')
                      ->select('users.section_id', DB::raw('count(users.section_id) as section_count'))
                      ->groupBy('users.section_id')
-                     ->limit(10)
                      ->get();
     }
 
