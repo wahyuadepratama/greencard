@@ -45,18 +45,19 @@
      <!-- end alert -->
      <script type="text/javascript">
        $(function () {
-                  $('#datetimepicker2').datetimepicker({
-                      format: 'LT',
-                      locale:'id'
-                  });
-              });
+            $('#datetimepicker2').datetimepicker({
+                format: 'LT',
+                locale:'id'
+            });
+        });
 
         $(function () {
-                   $('#datetimepicker').datetimepicker({
-                      format: 'L',
-                       locale:'id'
-                   });
-               });
+             $('#datetimepicker').datetimepicker({
+                format: 'L',
+                 locale:'id'
+             });
+         });
+     
      </script>
 
 

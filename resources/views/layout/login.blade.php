@@ -2,9 +2,21 @@
 
 @section('content-layout')
 <style media="screen">
-button.btn-primary:hover{
-background-color: #11ab51;
-}
+
+  button.btn-primary:hover{
+  background-color: #11ab51;
+  }
+  ::-webkit-input-placeholder { /* Edge */
+    color: #18161b7d !important;
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #18161b7d !important;
+  }
+
+  ::placeholder {
+    color: #18161b7d !important;
+  }
 </style>
 <div class="container-fluid login d-flex justify-content-center" id="wrapper-login">
   <div class="background-image clearfix">

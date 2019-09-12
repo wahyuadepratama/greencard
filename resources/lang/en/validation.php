@@ -139,7 +139,7 @@ return [
             'required' => 'Detail lokasi tidak boleh kosong',
         ],
         'danger_category' => [
-            'required' => 'Kategori bahaya tidak boleh kosong',
+            'required' => 'Opsi kategori bahaya harus dipilih',
         ],
         'danger_code' => [
             'required' => 'Kode Bahaya tidak boleh kosong',
@@ -173,6 +173,12 @@ return [
         'brl' => [
             'required' => 'BRL/Level harus diisi',
         ],
+        'location' => [
+          'required' => 'Opsi lokasi harus dipilih'
+        ],
+        'pic' => [
+          'required' => 'Opsi PIC Section harus dipilih'
+        ]
     ],
 
     /*

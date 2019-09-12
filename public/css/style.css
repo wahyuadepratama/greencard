@@ -353,3 +353,15 @@ padding: 0px;
 ::-webkit-scrollbar-thumb:hover {
   background:#34a062
 }
+
+::-webkit-input-placeholder { /* Edge */
+  color: #ced4da82 !important;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #ced4da82 !important;
+}
+
+::placeholder {
+  color: #ced4da82 !important;
+}

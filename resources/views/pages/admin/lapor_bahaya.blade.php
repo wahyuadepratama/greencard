@@ -55,6 +55,7 @@
           <div class="form-group">
             <label for="exampleFormControlSelect2">Lokasi</label>
             <select class="form-control" name="location" id="exampleFormControlSelect2">
+              <option value="">Pilih Lokasi</option>
               <option value="Office">Office</option>
               <option value="Warehouse">Warehouse</option>
               <option value="Workshop">Workshop</option>
@@ -74,6 +75,7 @@
               <div class="form-group">
                   <label for="exampleFormControlSelect1">Kategori Bahaya</label>
                   <select class="form-control" name="danger_category" id="exampleFormControlSelect1">
+                    <option value="">Pilih Kategori</option>
                     <option value="Kondisi Tidak Aman"> Kondisi Tidak Aman </option>
                     <option value="Tindakan Tidak Aman"> Tindakan Tidak Aman</option>
                   </select>
@@ -83,6 +85,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Kode Bahaya</label>
                     <select class="form-control" name="danger_code" id="exampleFormControlSelect1">
+                      <option value="">Pilih Kode</option>
                       <option>AA</option>
                       <option>A</option>
                       <option>B </option>
@@ -110,6 +113,7 @@
           <div class="form-group">
             <label for="exampleFormControlSelect2">PIC Section</label>
             <select class="form-control" name="pic" id="exampleFormControlSelect2">
+                <option value="">Pilih PIC Section</option>
               @foreach($sections as $s)
                 <option value="{{ $s->id }}">{{ $s->name }}</option>
               @endforeach
