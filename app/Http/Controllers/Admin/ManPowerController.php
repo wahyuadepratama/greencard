@@ -24,7 +24,7 @@ class ManPowerController extends Controller
       $request->validate([
           'role' => 'required',
           'name' => 'required',
-          'nik' => 'required|integer|unique:users',
+          'nik' => 'required|unique:users',
           'position' => 'required',
           'brl' => 'required',
           'section' => 'required',
