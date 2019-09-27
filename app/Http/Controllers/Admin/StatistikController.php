@@ -21,10 +21,10 @@ class StatistikController extends Controller
           $gk['office'] = Report::where('location', 'Office')->get()->count();
           $gk['warehouse'] = Report::where('location', 'Warehouse')->get()->count();
           $gk['workshop'] = Report::where('location', 'Workshop')->get()->count();
-          $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->get()->count();
+          $gk['tambang_ob'] = Report::where('location', 'Area Tambang')->get()->count();
           $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->get()->count();
           $gk['mess'] = Report::where('location', 'Area Mess')->get()->count();
-          $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->get()->count();
+          $gk['pit_stop'] = Report::where('location', 'like', '%Pit Stop%')->get()->count();
           $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->get()->count();
           $gk = (object) $gk;
 
@@ -50,10 +50,10 @@ class StatistikController extends Controller
           $gk['office'] = Report::where('location', 'Office')->whereYear('date', $year)->get()->count();
           $gk['warehouse'] = Report::where('location', 'Warehouse')->whereYear('date', $year)->get()->count();
           $gk['workshop'] = Report::where('location', 'Workshop')->whereYear('date', $year)->get()->count();
-          $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->whereYear('date', $year)->get()->count();
+          $gk['tambang_ob'] = Report::where('location', 'Area Tambang')->whereYear('date', $year)->get()->count();
           $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->whereYear('date', $year)->get()->count();
           $gk['mess'] = Report::where('location', 'Area Mess')->whereYear('date', $year)->get()->count();
-          $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->whereYear('date', $year)->get()->count();
+          $gk['pit_stop'] = Report::where('location', 'like', '%Pit Stop%')->whereYear('date', $year)->get()->count();
           $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->whereYear('date', $year)->get()->count();
           $gk = (object) $gk;
 
@@ -79,10 +79,10 @@ class StatistikController extends Controller
           $gk['office'] = Report::where('location', 'Office')->whereMonth('date', $month)->get()->count();
           $gk['warehouse'] = Report::where('location', 'Warehouse')->whereMonth('date', $month)->get()->count();
           $gk['workshop'] = Report::where('location', 'Workshop')->whereMonth('date', $month)->get()->count();
-          $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->whereMonth('date', $month)->get()->count();
+          $gk['tambang_ob'] = Report::where('location', 'Area Tambang')->whereMonth('date', $month)->get()->count();
           $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->whereMonth('date', $month)->get()->count();
           $gk['mess'] = Report::where('location', 'Area Mess')->whereMonth('date', $month)->get()->count();
-          $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->whereMonth('date', $month)->get()->count();
+          $gk['pit_stop'] = Report::where('location', 'like', '%Pit Stop%')->whereMonth('date', $month)->get()->count();
           $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->whereMonth('date', $month)->get()->count();
           $gk = (object) $gk;
 
@@ -108,10 +108,10 @@ class StatistikController extends Controller
           $gk['office'] = Report::where('location', 'Office')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
           $gk['warehouse'] = Report::where('location', 'Warehouse')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
           $gk['workshop'] = Report::where('location', 'Workshop')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
-          $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+          $gk['tambang_ob'] = Report::where('location', 'Area Tambang')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
           $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
           $gk['mess'] = Report::where('location', 'Area Mess')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
-          $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
+          $gk['pit_stop'] = Report::where('location', 'like', '%Pit Stop%')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
           $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->whereMonth('date', $month)->whereYear('date', $year)->get()->count();
           $gk = (object) $gk;
 
@@ -140,10 +140,10 @@ class StatistikController extends Controller
         $gk['office'] = Report::where('location', 'Office')->get()->count();
         $gk['warehouse'] = Report::where('location', 'Warehouse')->get()->count();
         $gk['workshop'] = Report::where('location', 'Workshop')->get()->count();
-        $gk['tambang_ob'] = Report::where('location', 'Area Tambang (OB)')->get()->count();
+        $gk['tambang_ob'] = Report::where('location', 'Area Tambang')->get()->count();
         $gk['tambang_coal'] = Report::where('location', 'Area Tambang (Coal)')->get()->count();
         $gk['mess'] = Report::where('location', 'Area Mess')->get()->count();
-        $gk['pit_stop'] = Report::where('location', 'Pit Stop / Shutdown')->get()->count();
+        $gk['pit_stop'] = Report::where('location', 'like', '%Pit Stop%')->get()->count();
         $gk['area_lainnya'] = Report::where('location', 'Area Lainnya')->get()->count();
         $gk = (object) $gk;
 
